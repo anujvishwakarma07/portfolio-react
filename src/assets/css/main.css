@@ -1,13 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
-/*============================================ 
-	# Template Name: Dixon
-	# Version: 1.0
-	# Date: 00/00/2024
-	# Author: Dixon
-	# Author URI: 
-	# Description: Dixon - HTML Templates
-============================================*/
+
 /*======== Scss Compiles =========
 # mixin
 # variables
@@ -5550,8 +5543,8 @@ p {
   }
 
   .footer-section .copyright {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -5682,7 +5675,7 @@ p {
   }
 
   .footer-section .footer-topping-wrap {
-    padding: 36px 10px;
+    padding: 36px 20px;
   }
 }
 
@@ -6262,7 +6255,7 @@ p {
 /* Horizontal Header Navigation */
 .header-section-unique.horizontal-nav {
   width: 100%;
-  padding: 20px 60px;
+  padding: 20px clamp(20px, 4vw, 80px);
   background: rgba(0, 0, 0, 0.45);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -6381,6 +6374,8 @@ p {
   padding-top: 100px;
   /* clear fixed navbar */
   padding-bottom: 50px;
+  padding-left: clamp(20px, 4vw, 80px);
+  padding-right: clamp(20px, 4vw, 80px);
 }
 
 /* Typography styles matching Saksham's */
@@ -6552,9 +6547,6 @@ p {
 
 /* Responsive Navbar / Mobile Hide Menu style */
 @media (max-width: 991px) {
-  .header-section-unique.horizontal-nav {
-    padding: 20px 30px;
-  }
 
   .main-menu.horizontal-menu {
     display: none !important;
@@ -6575,9 +6567,6 @@ p {
 }
 
 @media (max-width: 575px) {
-  .header-section-unique.horizontal-nav {
-    padding: 20px;
-  }
 
   .hero-main-title {
     font-size: 2.2rem;
@@ -6729,4 +6718,23 @@ p {
   /* Shorter line width */
   height: 1px;
   background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Enforce fluid padding from left and right side across all responsive views */
+@media (max-width: 1599px) {
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: clamp(20px, 4vw, 80px) !important;
+    padding-right: clamp(20px, 4vw, 80px) !important;
+  }
+
+  .header-section-unique.horizontal-nav {
+    padding-left: clamp(20px, 4vw, 80px) !important;
+    padding-right: clamp(20px, 4vw, 80px) !important;
+  }
 }
