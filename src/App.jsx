@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import Hero from "./components/Hero"
 import AOS from 'aos' // 1. Import AOS JS library
 import Timeline from "./components/Timeline"
+import Skills from "./components/Skills"
 
 function App() {
   //Initializing AOS when the app loads
@@ -29,6 +30,9 @@ function App() {
 
       {/* Rendering the timeline here */}
       <Timeline />
+
+      {/* Rendering the skills section  */}
+      <Skills />
     </>
   )
 }
