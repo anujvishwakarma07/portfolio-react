@@ -7,6 +7,7 @@ import Timeline from "./components/Timeline"
 import Skills from "./components/Skills"
 import Marquee from "./components/Marquee"
 import Services from "./components/Services"
+import Sponsors from "./components/Sponsors"
 
 function App() {
   //Initializing AOS when the app loads
@@ -41,6 +42,9 @@ function App() {
 
       {/* Rendering the Service section */}
       <Services />
+
+      {/* Rendering the working technology section */}
+      <Sponsors />
     </>
   )
 }
