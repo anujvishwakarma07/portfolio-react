@@ -7,6 +7,8 @@ import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import ServicesPage from "./pages/ServicesPage"
 import PortfolioPage from "./pages/PortfolioPage"
+import BlogPage from "./pages/BlogPage"
+import BlogDetailsPage from "./pages/BlogDetailsPage"
 
 function App() {
   //Initializing AOS when the app loads
@@ -24,6 +26,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailsPage />} />
       </Routes>
 
 
