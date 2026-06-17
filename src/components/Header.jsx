@@ -1,68 +1,38 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 function Header() {
-  const [menuActive, setMenuActive] = useState(false)
-
-  const toggleMenu = () => {
-    setMenuActive(!menuActive)
-  }
-
   return (
-    <div className="header-section-unique mobile-menu">
+    <div className="header-section-unique horizontal-nav">
       <div className="header-wrapper">
-        <div className="main__logo">
-          <a href="/" className="logo">
-            <img src="/assets/img/logo/av-logo.png" alt="logo" />
-          </a>
-        </div>
+        <a href="/" className="brand-link">
+          <div className="logo-status-area">
+            <svg className="brand-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" stroke-dasharray="4 4"/>
+              <path d="M12 6a6 6 0 0 1 6 6"/>
+            </svg>
+            <span className="brand-name">Anuj Vishwakarma</span>
+          </div>
+        </a>
         
-        {/* Toggle 'active' class on menu when mobile toggle is clicked */}
-        <ul className={`main-menu d-grid ${menuActive ? 'active' : ''}`}>
-          <li className="menu-border"></li>
+        {/* Simplified horizontal navigation links */}
+        <ul className="main-menu horizontal-menu">
           <li>
-            <a href="/">Home</a>
+            <a href="#about">About</a>
           </li>
-          <li className="menu-border"></li>
-          <li>
-            <a href="#about">About me</a>
-          </li>
-          <li className="menu-border"></li>
           <li>
             <a href="#reprot">Resume</a>
           </li>
-          <li className="menu-border"></li>
           <li>
             <a href="#skill">Stack</a>
           </li>
-          <li className="menu-border"></li>
           <li>
-            <a href="#serv">Services</a>
+            <a href="#ports">Work</a>
           </li>
-          <li className="menu-border"></li>
-          <li>
-            <a href="#ports">Portfolio</a>
-          </li>
-          <li className="menu-border"></li>
-          <li>
-            <a href="#testi">Client</a>
-          </li>
-          <li className="menu-border"></li>
-          <li>
-            <a href="#blogs">Insight</a>
-          </li>
-          <li className="menu-border"></li>
-          <li>
-            <a href="#conts">Contact Us</a>
-          </li>
-          <li className="menu-border"></li>
         </ul>
 
-        <div className="custom-toggle-bar" onClick={toggleMenu}>
-          <div className={`header-bar d-lg-none ${menuActive ? 'active' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        {/* CTA Button - Visible on all screens */}
+        <div className="header-cta">
+          <a href="#conts" className="nav-cta-btn">Get in touch ↗</a>
         </div>
       </div>
     </div>

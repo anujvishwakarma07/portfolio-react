@@ -10,6 +10,7 @@ import PortfolioPage from "./pages/PortfolioPage"
 import BlogPage from "./pages/BlogPage"
 import BlogDetailsPage from "./pages/BlogDetailsPage"
 import PortfolioDetailsPage from "./pages/PortfolioDetailsPage"
+import { Agentation } from "agentation";
 
 function App() {
   //Initializing AOS when the app loads
@@ -35,6 +36,9 @@ function App() {
 
       {/* Rendering Footer */}
       <Footer />
+      
+      {/* Agentation Toolbar */}
+      {import.meta.env.DEV && <Agentation />}
     </Router>
   )
 }

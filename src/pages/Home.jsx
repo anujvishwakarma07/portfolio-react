@@ -15,12 +15,10 @@ import Header from '../components/Header'
 function Home() {
     return (
         <>
+            <Header />
             {/* Hero banner section wrapper */}
             <section className="banner-section mb-common" id="bn">
-                <div className="banner-herowrapper">
-                    <Header />
-                    <Hero />
-                </div>
+                <Hero />
             </section>
 
             <About />
