@@ -6,6 +6,7 @@ import AOS from 'aos' // 1. Import AOS JS library
 import Timeline from "./components/Timeline"
 import Skills from "./components/Skills"
 import Marquee from "./components/Marquee"
+import Services from "./components/Services"
 
 function App() {
   //Initializing AOS when the app loads
@@ -37,6 +38,9 @@ function App() {
 
       {/* Rendering the Marquee section */}
       <Marquee />
+
+      {/* Rendering the Service section */}
+      <Services />
     </>
   )
 }
