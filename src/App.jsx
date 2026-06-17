@@ -10,6 +10,8 @@ import Services from "./components/Services"
 import Sponsors from "./components/Sponsors"
 import Works from "./components/Works"
 import Testimonials from "./components/Testimonials"
+import Blogs from "./components/Blogs"
+import Footer from "./components/Footer"
 
 function App() {
   //Initializing AOS when the app loads
@@ -53,6 +55,13 @@ function App() {
 
       {/* Rendering the testimonial  */}
       <Testimonials />
+
+      {/* Rendering the Blogs */}
+      <Blogs />
+
+
+      {/* Rendering Footer */}
+      <Footer />
     </>
   )
 }
