@@ -8,6 +8,8 @@ import Skills from "./components/Skills"
 import Marquee from "./components/Marquee"
 import Services from "./components/Services"
 import Sponsors from "./components/Sponsors"
+import Works from "./components/Works"
+import Testimonials from "./components/Testimonials"
 
 function App() {
   //Initializing AOS when the app loads
@@ -45,6 +47,12 @@ function App() {
 
       {/* Rendering the working technology section */}
       <Sponsors />
+
+      {/* Rendering the projects section in which i have worked and working.. */}
+      <Works />
+
+      {/* Rendering the testimonial  */}
+      <Testimonials />
     </>
   )
 }
