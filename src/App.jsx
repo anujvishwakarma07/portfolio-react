@@ -1,68 +1,35 @@
 import { useEffect } from "react"
-import About from "./components/About"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import AOS from 'aos' // 1. Import AOS JS library
-import Timeline from "./components/Timeline"
-import Skills from "./components/Skills"
-import Marquee from "./components/Marquee"
-import Services from "./components/Services"
-import Sponsors from "./components/Sponsors"
-import Works from "./components/Works"
-import Testimonials from "./components/Testimonials"
-import Blogs from "./components/Blogs"
 import Footer from "./components/Footer"
+import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import Home from "./pages/Home"
+import ServicesPage from "./pages/ServicesPage"
+import PortfolioPage from "./pages/PortfolioPage"
 
 function App() {
   //Initializing AOS when the app loads
-  useEffect(()=>{
+  useEffect(() => {
     AOS.init({
-      once : true,
-      easing : 'ease-in-out',
+      once: true,
+      easing: 'ease-in-out',
     })
   }, []);
 
   return (
-    <>
-      <section className="banner-section mb-common" id="bn">
-        <div className="banner-herowrapper">
-          <Header />
-          <Hero />
-        </div>
-      </section>
-      
+    <Router>
 
-      {/* About Section  */}
-      <About />
-
-      {/* Rendering the timeline here */}
-      <Timeline />
-
-      {/* Rendering the skills section  */}
-      <Skills />
-
-      {/* Rendering the Marquee section */}
-      <Marquee />
-
-      {/* Rendering the Service section */}
-      <Services />
-
-      {/* Rendering the working technology section */}
-      <Sponsors />
-
-      {/* Rendering the projects section in which i have worked and working.. */}
-      <Works />
-
-      {/* Rendering the testimonial  */}
-      <Testimonials />
-
-      {/* Rendering the Blogs */}
-      <Blogs />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
+      </Routes>
 
 
       {/* Rendering Footer */}
       <Footer />
-    </>
+    </Router>
   )
 }
 
