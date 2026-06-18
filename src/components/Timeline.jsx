@@ -8,10 +8,10 @@ function Timeline() {
           <span className="section-sub" data-aos="fade-down" data-aos-duration="1000">
             Timeline Period
           </span>
-          <h2 className="stitle fw-500 mt-3" data-aos="fade-down" data-aos-duration="1500">
-            My Work Experience And
+          <h2 className="stitle mt-3" data-aos="fade-down" data-aos-duration="1500">
+            My <i>Work Experience</i> And
             <span className="text-storkes d-block">
-              My Education
+              <i>My Education</i>
             </span>
           </h2>
         </div>

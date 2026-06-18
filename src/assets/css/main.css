@@ -22,7 +22,7 @@
 @import "odometer.css";
 
 :root {
-  --body: #141413;
+  --body: #000000;
   --white: #fdf9cf;
   --pwhite: #fff;
   --title: #181818;
@@ -3198,7 +3198,42 @@ p {
 }
 
 .about-section-v01 .edu-expri-head h3 {
-  line-height: 44px;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  word-spacing: -0.05em;
+  color: #ffffff !important;
+  font-size: clamp(18px, 2.5vw, 36px);
+}
+
+.about-section-v01 .about-content-v1 .stitle {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  word-spacing: -0.05em;
+  color: #ffffff !important;
+  font-size: clamp(24px, 3.5vw, 52px);
+}
+
+.about-section-v01 h2 i,
+.about-section-v01 h3 i {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #fdf9cf;
+  padding-right: 2px;
+  text-transform: none;
+}
+
+.about-section-v01 .section-title .stitle .text-storkes i {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 1px var(--white) !important;
 }
 
 .about-section-v01 .about-thumbv1 {
@@ -3233,18 +3268,14 @@ p {
 }
 
 .about-section-v01 .about-content-v1 .about-content-inner .boxes .right-comp p {
-  margin-bottom: 42px;
-  line-height: 26px;
+  font-family: "Unbounded", sans-serif;
   font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #a0a09a !important;
+  margin-bottom: 30px;
 }
 
-@media (max-width: 1199px) {
-  .about-section-v01 .edu-expri-head h3 {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 34px;
-  }
-}
 
 @media (max-width: 767px) {
   .about-section-v01 .about-content-v1 {
@@ -3265,11 +3296,7 @@ p {
     margin-bottom: 24px;
   }
 
-  .about-section-v01 .edu-expri-head h3 {
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 28px;
-  }
+
 }
 
 @media (max-width: 575px) {
@@ -3646,11 +3673,61 @@ p {
 
 .education-item .educa-head h4 {
   margin-bottom: 10px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.education-item .educa-head h4 a {
+  color: #ffffff !important;
+  transition: all 0.3s ease;
+}
+
+.education-item .educa-head h4 a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 12px rgba(253, 249, 207, 0.25);
+}
+
+.education-item .educa-head span {
+  color: #a0a09a;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .education-item p {
+  font-family: "Unbounded", sans-serif;
   font-size: 16px;
-  line-height: 26px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #a0a09a !important;
+}
+
+.exprience-section-v01 .section-title .stitle {
+  font-family: "Unbounded", sans-serif;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  word-spacing: -0.05em;
+  color: #ffffff !important;
+  font-size: clamp(24px, 3.5vw, 52px);
+}
+
+.exprience-section-v01 h2 i {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: #fdf9cf;
+  padding-right: 2px;
+  text-transform: none;
+}
+
+.exprience-section-v01 .section-title .stitle .text-storkes i {
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-text-stroke: 1px var(--white) !important;
 }
 
 @media (max-width: 1600px) {
@@ -5682,8 +5759,9 @@ p {
 .check-box-style {
   max-width: 1810px;
   margin: 0 auto;
-  border: 1px solid rgb(38, 37, 37);
+  border: none;
   border-radius: 30px;
+  background-color: #000000;
 }
 
 @media screen and (max-width: 1800px) {
@@ -6375,7 +6453,7 @@ p {
   /* clear fixed navbar */
   padding-bottom: 50px;
   padding-left: clamp(20px, 4vw, 80px);
-  padding-right: clamp(20px, 4vw, 80px);
+  padding-right: 0;
 }
 
 /* Typography styles matching Saksham's */

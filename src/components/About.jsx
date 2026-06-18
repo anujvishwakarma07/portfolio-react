@@ -10,9 +10,8 @@ function About() {
             <span className="section-sub" data-aos="fade-down" data-aos-duration="1000">
               About Me
             </span>
-            <h3 className="fw-500 mt-3" data-aos="fade-down" data-aos-duration="1500">
-              <span className="d-flex justify-content-end">I’m a Full-Stack Developer working with MERN and </span>
-              Next.js, building scalable web applications and solving real-world development problems.
+            <h3 className="mt-3" data-aos="fade-down" data-aos-duration="1500">
+              I’m a <i>Full-Stack Developer</i> working with MERN and <i>Next.js</i>, building <i>scalable</i> web applications and solving <i>real-world</i> development problems.
             </h3>
           </div>
         </div>
@@ -29,10 +28,10 @@ function About() {
           <div className="col-lg-7">
             <div className="about-content-v1">
               <div className="section-title mb-xxl-5 mb-sm-4 mb-3">
-                <h2 className="stitle fw-500 mt-3" data-aos="fade-down" data-aos-duration="1500">
-                  To Build Scalable And
+                <h2 className="stitle mt-3" data-aos="fade-down" data-aos-duration="1500">
+                  To Build <i>Scalable</i> And
                   <span className="text-storkes d-block">
-                    Modern Web Solutions
+                    <i>Modern Web Solutions</i>
                   </span>
                 </h2>
               </div>

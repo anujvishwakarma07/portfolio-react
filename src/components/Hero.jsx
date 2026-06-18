@@ -44,7 +44,8 @@ function Hero() {
             </div>
 
             <div className="profile-details mt-3 text-center">
-              <h4 className="profile-name white mb-3">Anuj Vishwakarma</h4>
+              <h4 className="profile-name white mb-1">Anuj Vishwakarma</h4>
+              <p className="profile-role pra-clr mb-3">Full Stack Developer | MERN Stack</p>
               <ul className="profile-social-links d-flex gap-3 justify-content-center">
                 <li>
                   <a href="https://www.instagram.com/imanuj_07_/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
