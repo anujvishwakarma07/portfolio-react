@@ -9,7 +9,7 @@ function Hero() {
         <div className="col-lg-7 col-md-12 hero-text-side">
           <div className="location-label mb-4 mb-lg-3 d-inline-flex align-items-center" data-aos="fade-down" data-aos-duration="1000">
             <span className="status-dot"></span>
-            <span>Final Year CSE · SDE Intern 2026 · Open to Full-time</span>
+            <span>CSE Graduate · SDE Intern 2026 · Open to Full-time</span>
           </div>
 
           <h1 className="hero-main-title white mb-4" data-aos="fade-right" data-aos-duration="1200">

@@ -20,18 +20,26 @@ function Header() {
             <a href="#about">About</a>
           </li>
           <li>
-            <a href="#reprot">Resume</a>
+            <a href="#skill">Stack</a>
           </li>
           <li>
-            <a href="#skill">Stack</a>
+            <a href="#reprot">Resume</a>
           </li>
           <li>
             <a href="#ports">Work</a>
           </li>
+          <li>
+            <a href="#serv">Services</a>
+          </li>
         </ul>
 
-        {/* CTA Button - Visible on all screens */}
-        <div className="header-cta">
+        {/* CTA Buttons */}
+        <div className="header-cta d-flex gap-2 align-items-center">
+          <a href="/Anuj_Vishwakarma_Resume.pdf" download className="nav-secondary-btn d-inline-flex align-items-center gap-1">
+            <i className="bi bi-download" style={{ fontSize: '14px' }}></i>
+            <span className="d-none d-lg-inline">Download CV</span>
+            <span className="d-inline d-lg-none">CV</span>
+          </a>
           <a href="#conts" className="nav-cta-btn">Get in touch ↗</a>
         </div>
       </div>

@@ -147,7 +147,7 @@ function Timeline() {
                       </a>
                     </h4>
                     <span className="pra-clr">
-                      ( 2022 - 2026 ) Ongoing
+                      ( 2022 - 2026 )
                     </span>
                   </div>
                   <p className="pra-clr">

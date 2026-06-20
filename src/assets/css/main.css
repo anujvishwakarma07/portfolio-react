@@ -66,7 +66,7 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--white);
+  color: var(--pwhite);
   text-transform: capitalize;
   font-family: "Unbounded", sans-serif;
 }
@@ -1209,8 +1209,14 @@ p {
 }
 
 .section-title .stitle .text-storkes {
-  -webkit-text-stroke: 1px var(--white);
-  -webkit-text-fill-color: transparent;
+  font-family: "Instrument Serif", serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0px;
+  color: var(--white) !important;
+  text-transform: none;
+  -webkit-text-fill-color: initial !important;
+  -webkit-text-stroke: unset !important;
 }
 
 @media (max-width: 1199px) {
@@ -3232,8 +3238,9 @@ p {
   font-family: "Instrument Serif", serif;
   font-style: italic;
   font-weight: 400;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: 1px var(--white) !important;
+  -webkit-text-fill-color: initial !important;
+  -webkit-text-stroke: unset !important;
+  color: var(--white) !important;
 }
 
 .about-section-v01 .about-thumbv1 {
@@ -3726,8 +3733,9 @@ p {
   font-family: "Instrument Serif", serif;
   font-style: italic;
   font-weight: 400;
-  -webkit-text-fill-color: transparent !important;
-  -webkit-text-stroke: 1px var(--white) !important;
+  -webkit-text-fill-color: initial !important;
+  -webkit-text-stroke: unset !important;
+  color: var(--white) !important;
 }
 
 @media (max-width: 1600px) {
@@ -5094,11 +5102,11 @@ p {
   height: 60px;
   object-fit: contain;
   transition: all 0.4s ease;
-  filter: grayscale(1) opacity(0.7);
+  filter: grayscale(0) opacity(0.85);
 }
 
 .tech-card .light-filter {
-  filter: grayscale(1) opacity(0.7) invert(1);
+  filter: grayscale(0) opacity(0.85) invert(1);
 }
 
 .tech-card span {
@@ -6482,6 +6490,28 @@ p {
   transform: translateY(-1px);
 }
 
+/* Download CV secondary outline button in header */
+.nav-secondary-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: #ffffff !important;
+  padding: 10px 24px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-transform: none;
+  display: inline-block;
+}
+
+.nav-secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
 /* Full Screen Hero Container */
 .hero-fullscreen-layout {
   flex: 1;
@@ -6511,11 +6541,11 @@ p {
   position: relative;
   width: 8px;
   height: 8px;
-  background-color: var(--success);
+  background-color: var(--pwhite);
   border-radius: 50%;
   flex-shrink: 0;
   display: inline-block;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .location-label .status-dot::after {
@@ -6526,7 +6556,7 @@ p {
   right: -4px;
   bottom: -4px;
   border-radius: 50%;
-  border: 2px solid var(--success);
+  border: 2px solid var(--pwhite);
   animation: pulseStatusDot 2.2s infinite cubic-bezier(0.25, 0, 0, 1);
   opacity: 0;
 }
@@ -6913,7 +6943,8 @@ p {
     font-size: 1.05rem !important; /* Reduced slightly to prevent header overflow on 401px screen */
     white-space: nowrap !important; /* Prevent logo name wrapping */
   }
-  .nav-cta-btn {
+  .nav-cta-btn,
+  .nav-secondary-btn {
     padding: 6px 12px !important; /* Slightly smaller padding to fit horizontally */
     font-size: 10.5px !important; /* Slightly smaller font to fit screen width */
     white-space: nowrap !important; /* Prevent button text wrapping */
