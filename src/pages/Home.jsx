@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Hero from '../components/Hero'
 import About from '../components/About'
 import Timeline from '../components/Timeline'
@@ -13,6 +13,10 @@ import Footer from '../components/Footer'
 import Header from '../components/Header'
 
 function Home() {
+    useEffect(() => {
+        document.title = 'Anuj Vishwakarma | Full Stack Developer – MERN Stack Portfolio'
+    }, [])
+
     return (
         <>
             <Header />

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 // Centralized project data details
@@ -52,6 +52,10 @@ function PortfolioDetailsPage() {
 
   // Find the active project details, or fall back to the first one if not found
   const activeProject = projectsDetailList.find(p => p.id === id) || projectsDetailList[0]
+
+  useEffect(() => {
+    document.title = `${activeProject.title} | Portfolio – Anuj Vishwakarma`
+  }, [activeProject.title])
 
   // Filter out the active project to list other projects as related projects
   const relatedProjects = projectsDetailList.filter(p => p.id !== activeProject.id).slice(0, 3)

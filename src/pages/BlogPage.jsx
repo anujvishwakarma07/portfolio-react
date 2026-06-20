@@ -58,6 +58,10 @@ function BlogPage() {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    document.title = 'Blog | Anuj Vishwakarma – Full Stack Developer'
+  }, [])
+
+  useEffect(() => {
     async function loadBlogs() {
       try {
         const response = await fetch(HASHNODE_API_URL, {

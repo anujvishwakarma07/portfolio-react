@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Services from '../components/Services'
 import Marquee from '../components/Marquee'
 import Sponsors from '../components/Sponsors'
 
 function ServicesPage() {
+  useEffect(() => {
+    document.title = 'Services | Anuj Vishwakarma – Full Stack Developer'
+  }, [])
+
   return (
     <>
       {/* 1. Services Page Header Banner */}

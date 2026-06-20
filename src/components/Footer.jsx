@@ -111,7 +111,7 @@ function Footer() {
         <div className="footer-bottom">
           <div className="copyright">
             <p className="pra-clr">
-              &copy; 2024. All rights reserved <a href="/" className="pwhite">Anuj Vishwakarma.</a>
+              &copy; 2025. All rights reserved <a href="/" className="pwhite">Anuj Vishwakarma.</a>
             </p>
             <a href="#bn" className="scroll-toptext">Back To Home</a>
             <ul className="terms">

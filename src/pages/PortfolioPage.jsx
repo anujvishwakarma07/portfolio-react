@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Sponsors from '../components/Sponsors'
 
 function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('Show All')
 
+  useEffect(() => {
+    document.title = 'Portfolio | Anuj Vishwakarma – Full Stack Developer'
+  }, [])
   // List of all projects (copied directly from protfolio.html)
   const projects = [
     {

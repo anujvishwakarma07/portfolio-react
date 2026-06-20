@@ -46,6 +46,10 @@ function BlogDetailsPage() {
 
   // 1. Fetch Blog Data from Hashnode
   useEffect(() => {
+    document.title = `${post.title} | Anuj Vishwakarma`
+  }, [post.title])
+
+  useEffect(() => {
     async function fetchPostDetail() {
       try {
         const response = await fetch(HASHNODE_API_URL, {

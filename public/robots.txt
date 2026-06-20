@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anujvishwakarma.vercel.app/sitemap.xml
+
+
