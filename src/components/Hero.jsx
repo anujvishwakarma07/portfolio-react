@@ -7,16 +7,17 @@ function Hero() {
 
         {/* Left Side: Typography and main introduction */}
         <div className="col-lg-7 col-md-12 hero-text-side">
-          <div className="location-label mb-3" data-aos="fade-down" data-aos-duration="1000">
-            <span>Base in India · Open to interesting projects</span>
+          <div className="location-label mb-4 mb-lg-3 d-inline-flex align-items-center" data-aos="fade-down" data-aos-duration="1000">
+            <span className="status-dot"></span>
+            <span>Final Year CSE · SDE Intern 2026 · Open to Full-time</span>
           </div>
 
           <h1 className="hero-main-title white mb-4" data-aos="fade-right" data-aos-duration="1200">
-            Building <i>scalable, high-performance</i> MERN stack applications that <i>solve real-world</i> problems.
+            Full Stack <i>Developer</i>. <br /> I build backend systems and <i>ship them</i>.
           </h1>
 
           <p className="hero-intro-desc pra-clr mb-5" data-aos="fade-right" data-aos-duration="1400">
-            I’m Anuj Vishwakarma — a Full Stack Developer specializing in crafting robust backend services, dynamic interfaces, and scaling web solutions. Let’s build something impactful.
+            Worked across Node.js, React, MongoDB, and Laravel to ship auth systems, real-time apps, and AI integrations.
           </p>
 
           {/* Quick Metrics at bottom left */}

@@ -6376,9 +6376,11 @@ p {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   z-index: 9999;
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  margin: 0 !important;
 }
 
 .header-section-unique.horizontal-nav .header-wrapper {
@@ -6388,6 +6390,7 @@ p {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  transform: none !important;
 }
 
 .brand-link {
@@ -6484,18 +6487,59 @@ p {
   flex: 1;
   display: flex;
   align-items: center;
-  max-width: 1300px;
+  max-width: 1440px;
   width: 100%;
-  padding-top: 100px;
+  padding-top: 140px;
   /* clear fixed navbar */
-  padding-bottom: 50px;
-  padding-left: clamp(20px, 4vw, 80px);
-  padding-right: 0;
+  padding-bottom: 100px;
+  padding-left: clamp(30px, 6vw, 100px);
+  padding-right: clamp(30px, 6vw, 100px);
 }
 
 /* Typography styles matching Saksham's */
 .hero-text-side {
   padding-right: 40px;
+}
+
+.location-label {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.location-label .status-dot {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  background-color: var(--success);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.location-label .status-dot::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--success);
+  animation: pulseStatusDot 2.2s infinite cubic-bezier(0.25, 0, 0, 1);
+  opacity: 0;
+}
+
+@keyframes pulseStatusDot {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.0);
+    opacity: 0;
+  }
 }
 
 .location-label span {
@@ -6506,7 +6550,7 @@ p {
 }
 
 .hero-main-title {
-  font-size: 4rem;
+  font-size: 4.5rem;
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -6670,6 +6714,8 @@ p {
   .hero-fullscreen-layout {
     padding-top: 100px;
     padding-bottom: 80px;
+    padding-left: clamp(20px, 4vw, 80px);
+    padding-right: clamp(20px, 4vw, 80px);
   }
 
   .hero-main-title {
@@ -6695,7 +6741,7 @@ p {
 /* Hero Profile Image Override */
 .hero-profile-image-wrap {
   width: 100%;
-  max-width: 660px;
+  max-width: 520px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6778,7 +6824,7 @@ p {
 .hero-profile-img {
   width: 100%;
   height: auto;
-  max-height: 630px;
+  max-height: 500px;
   /* Aligns perfectly with left column height */
   object-fit: contain;
   border-radius: 20px;
@@ -6809,9 +6855,8 @@ p {
 
 .hero-profile-card-layout {
   width: 100%;
-  max-width: 660px;
+  max-width: 520px;
   margin-left: auto;
-  padding-left: 30px;
 }
 
 .profile-details {
@@ -6853,5 +6898,30 @@ p {
   .header-section-unique.horizontal-nav {
     padding-left: clamp(20px, 4vw, 80px) !important;
     padding-right: clamp(20px, 4vw, 80px) !important;
+  }
+}
+
+/* Responsive mobile header updates to prevent overlapping and text wrapping */
+@media (max-width: 480px) {
+  .logo-status-area {
+    gap: 6px;
+  }
+  .brand-icon {
+    display: none !important; /* Hide icon on tiny screens to save space */
+  }
+  .brand-name {
+    font-size: 1.05rem !important; /* Reduced slightly to prevent header overflow on 401px screen */
+    white-space: nowrap !important; /* Prevent logo name wrapping */
+  }
+  .nav-cta-btn {
+    padding: 6px 12px !important; /* Slightly smaller padding to fit horizontally */
+    font-size: 10.5px !important; /* Slightly smaller font to fit screen width */
+    white-space: nowrap !important; /* Prevent button text wrapping */
+  }
+  .header-section-unique.horizontal-nav {
+    padding-left: 12px !important; /* Reduced horizontal padding from 16px to fit 401px width screen */
+    padding-right: 12px !important;
+    padding-top: 14px !important;
+    padding-bottom: 14px !important;
   }
 }

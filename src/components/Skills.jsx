@@ -1,11 +1,42 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 // Sub-component to handle local counting animation
 function AnimatedProgress({ percent, label, subtext, delay }) {
   const [count, setCount] = useState(0)
   const [animated, setAnimated] = useState(false)
+  const [startAnimation, setStartAnimation] = useState(false)
+  const elementRef = useRef(null)
+
+  // Use IntersectionObserver to start animation only when scrolled into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries
+        if (entry.isIntersecting) {
+          setStartAnimation(true)
+          // Stop observing once animation has started
+          observer.unobserve(entry.target)
+        }
+      },
+      {
+        threshold: 0.1, // trigger when 10% of the element is visible
+      }
+    )
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current)
+    }
+
+    return () => {
+      if (elementRef.current) {
+        observer.unobserve(elementRef.current)
+      }
+    }
+  }, [])
 
   useEffect(() => {
+    if (!startAnimation) return
+
     // 1. Trigger the circle progress animation
     const timer = setTimeout(() => {
       setAnimated(true)
@@ -31,13 +62,18 @@ function AnimatedProgress({ percent, label, subtext, delay }) {
       clearTimeout(timer)
       clearInterval(counter)
     }
-  }, [percent])
+  }, [percent, startAnimation])
 
   // Circumference for r=45 is 283
   const strokeDashoffset = animated ? 283 - (percent / 100) * 283 : 283
 
   return (
-    <div className="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-duration={delay}>
+    <div 
+      ref={elementRef}
+      className="col-lg-3 col-md-6 col-sm-6" 
+      data-aos="fade-up" 
+      data-aos-duration={delay}
+    >
       <div className="exprience-item cmn-shadow round50 d-center skill-circle-wrapper">
         <div className="skill-circle-inner">
           <svg className="skill-circle-svg" viewBox="0 0 100 100">
