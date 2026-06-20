@@ -1,6 +1,5 @@
 import React from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Autoplay } from 'swiper/modules'
+import { Link } from 'react-router-dom'
 
 function Works() {
   return (
@@ -20,7 +19,7 @@ function Works() {
             <div className="select-work d-flex align-items-start">
               <div className="d-flex flex-wrap align-items-center gap-md-4 gap-2 white">
                 <span className="pra-clr">Selected work *</span>
-                (2020-2024)
+                (2025-2026)
               </div>
               <img src="/assets/img/blog/half-arrow.png" alt="img" className="half-arrow" />
             </div>
@@ -28,121 +27,92 @@ function Works() {
           
           {/* View All Projects Circle Button */}
           <div className="blog-hoverbox">
-            <a href="protfolio.html" className="hover-circle cmborder wow fadeInUp" data-wow-duration="1.6s">
+            <Link to="/portfolio" className="hover-circle cmborder wow fadeInUp" data-wow-duration="1.6s">
               <span className="box">
                 <i className="bi bi-arrow-up-right"></i>
                 <span className="textmore">Projects All</span>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
 
-        {/* Works Slider Wrapper */}
-        <div className="working-project-wrap d-flex align-items-center justify-content-between">
-          {/* Left navigation arrow */}
-          <div className="portfolio-prev d-none d-sm-block" style={{ cursor: 'pointer' }}>
-            <img src="/assets/img/blog/left-arrow.png" alt="Previous" />
-          </div>
-
-          <Swiper
-            className="working-wrap"
-            modules={[Navigation, Autoplay]}
-            spaceBetween={10}
-            speed={2000}
-            loop={true}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: false,
-            }}
-            navigation={{
-              nextEl: '.portfolio-next',
-              prevEl: '.portfolio-prev',
-            }}
-            slidesPerView={1}
-          >
-            <SwiperSlide>
-              <div className="working-work-items cmn-shadow round8">
-                <div className="thumb round8 position-relative mb-30">
-                  <img src="/assets/img/blog/work01.png" alt="img" className="round8" />
-                  <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
-                    Design Kit
-                  </span>
-                </div>
-                <div className="working-content">
-                  <h4 className="mb-xxl-2 mb-2">
-                    <a href="protfolio-details.html" className="white">Digital Brand Design</a>
-                  </h4>
-                  <span className="pra-clr d-block">March, 2024</span>
+        {/* Projects Grid */}
+        <div className="row g-4">
+          {/* HavynLife */}
+          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1000">
+            <div className="working-work-items cmn-shadow round8">
+              <div className="thumb round8 position-relative mb-30">
+                <img src="/assets/img/blog/havynlife.png" alt="HavynLife - Airbnb Inspired Platform" className="round8" />
+                <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
+                  Full Stack
+                </span>
+              </div>
+              <div className="working-content">
+                <h4 className="mb-xxl-2 mb-2">
+                  <Link to="/Portfolio/havynlife" className="white">HAVYNLIFE</Link>
+                </h4>
+                <span className="pra-clr d-block mb-2">Node.js · Express · MongoDB · EJS</span>
+                <div className="d-flex gap-2 flex-wrap">
+                  <a href="https://github.com/anujvishwakarma07/HavynLife" target="_blank" rel="noopener noreferrer" className="project-link-btn">
+                    <i className="bi bi-github"></i> GitHub
+                  </a>
+                  <a href="https://havynlife.onrender.com/" target="_blank" rel="noopener noreferrer" className="project-link-btn project-link-live">
+                    <i className="bi bi-box-arrow-up-right"></i> Live
+                  </a>
                 </div>
               </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="working-work-items cmn-shadow round8">
-                <div className="thumb round8 position-relative mb-30">
-                  <img src="/assets/img/blog/work2.png" alt="img" className="round8" />
-                  <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
-                    Design Kit
-                  </span>
-                </div>
-                <div className="working-content">
-                  <h4 className="mb-xxl-2 mb-2">
-                    <a href="protfolio-details.html" className="white">Digital Brand Design</a>
-                  </h4>
-                  <span className="pra-clr d-block">March, 2024</span>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="working-work-items cmn-shadow round8">
-                <div className="thumb round8 position-relative mb-30">
-                  <img src="/assets/img/blog/work3.png" alt="img" className="round8" />
-                  <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
-                    Design Kit
-                  </span>
-                </div>
-                <div className="working-content">
-                  <h4 className="mb-xxl-2 mb-2">
-                    <a href="protfolio-details.html" className="white">Digital Brand Design</a>
-                  </h4>
-                  <span className="pra-clr d-block">March, 2024</span>
-                </div>
-              </div>
-            </SwiperSlide>
-
-            <SwiperSlide>
-              <div className="working-work-items cmn-shadow round8">
-                <div className="thumb round8 position-relative mb-30">
-                  <img src="/assets/img/blog/work1.png" alt="img" className="round8" />
-                  <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
-                    Design Kit
-                  </span>
-                </div>
-                <div className="working-content">
-                  <h4 className="mb-xxl-2 mb-2">
-                    <a href="protfolio-details.html" className="white">Digital Brand Design</a>
-                  </h4>
-                  <span className="pra-clr d-block">March, 2024</span>
-                </div>
-              </div>
-            </SwiperSlide>
-          </Swiper>
-
-          {/* Right navigation arrow */}
-          <div className="portfolio-next d-none d-sm-block" style={{ cursor: 'pointer' }}>
-            <img src="/assets/img/blog/right-arrow.png" alt="Next" />
-          </div>
-        </div>
-
-        {/* Mobile arrows */}
-        <div className="text-center mt-4 d-sm-none d-block">
-          <div className="d-inline-flex justify-content-center gap-4">
-            <div className="portfolio-prev" style={{ cursor: 'pointer' }}>
-              <img src="/assets/img/blog/left-arrow.png" alt="Previous" />
             </div>
-            <div className="portfolio-next" style={{ cursor: 'pointer' }}>
-              <img src="/assets/img/blog/right-arrow.png" alt="Next" />
+          </div>
+
+          {/* TanviqGPT */}
+          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1200">
+            <div className="working-work-items cmn-shadow round8">
+              <div className="thumb round8 position-relative mb-30">
+                <img src="/assets/img/blog/tanviqgpt.png" alt="TanviqGPT - AI Chat Application" className="round8" />
+                <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
+                  AI / LLM
+                </span>
+              </div>
+              <div className="working-content">
+                <h4 className="mb-xxl-2 mb-2">
+                  <Link to="/Portfolio/tanviqgpt" className="white">TANVIQGPT</Link>
+                </h4>
+                <span className="pra-clr d-block mb-2">React.js · Node.js · Express.js · MongoDB Atlas · OpenRouter API</span>
+                <div className="d-flex gap-2 flex-wrap">
+                  <a href="https://github.com/anujvishwakarma07/TanviqGpt" target="_blank" rel="noopener noreferrer" className="project-link-btn">
+                    <i className="bi bi-github"></i> GitHub
+                  </a>
+                  <a href="https://tanviq-gpt.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-link-btn project-link-live">
+                    <i className="bi bi-box-arrow-up-right"></i> Live
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* UpNexa */}
+          <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-duration="1400">
+            <div className="working-work-items cmn-shadow round8">
+              <div className="thumb round8 position-relative mb-30">
+                <img src="/assets/img/blog/upnexa.png" alt="UpNexa - Startup Listing Platform" className="round8" />
+                <span className="bade-kit round100 d-inline-flex justify-content-center align-items-center">
+                  Next.js
+                </span>
+              </div>
+              <div className="working-content">
+                <h4 className="mb-xxl-2 mb-2">
+                  <Link to="/Portfolio/upnexa" className="white">UPNEXA</Link>
+                </h4>
+                <span className="pra-clr d-block mb-2">Next.js 15 · React 19 · Sanity CMS · Tailwind CSS</span>
+                <div className="d-flex gap-2 flex-wrap">
+                  <a href="https://github.com/anujvishwakarma07/UpNexa" target="_blank" rel="noopener noreferrer" className="project-link-btn">
+                    <i className="bi bi-github"></i> GitHub
+                  </a>
+                  <a href="https://upnexa.vercel.app/" target="_blank" rel="noopener noreferrer" className="project-link-btn project-link-live">
+                    <i className="bi bi-box-arrow-up-right"></i> Live
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

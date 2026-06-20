@@ -28,8 +28,8 @@ function Home() {
             <Services />
             <Sponsors />
             <Works />
-            <Testimonials />
-            <Blogs />
+            {/* <Testimonials /> */}
+            {/* <Blogs /> */}
         </>
     )
 }

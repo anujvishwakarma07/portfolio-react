@@ -4936,23 +4936,27 @@ p {
   max-width: 500px;
 }
 
-.working-wrap .working-work-items {
+.working-wrap .working-work-items,
+.working-work-items {
   padding: 30px;
 }
 
-.working-wrap .working-work-items .thumb {
+.working-wrap .working-work-items .thumb,
+.working-work-items .thumb {
   transition: all 0.4s;
   width: 100%;
   overflow: hidden;
 }
 
-.working-wrap .working-work-items .thumb img {
+.working-wrap .working-work-items .thumb img,
+.working-work-items .thumb img {
   transition: all 0.4s;
   width: 100%;
   overflow: hidden;
 }
 
-.working-wrap .working-work-items .thumb .bade-kit {
+.working-wrap .working-work-items .thumb .bade-kit,
+.working-work-items .thumb .bade-kit {
   color: var(--title);
   background: var(--pwhite);
   padding: 10px 26px;
@@ -4962,17 +4966,50 @@ p {
 }
 
 @media (max-width: 1399px) {
-  .working-wrap .working-work-items {
+  .working-wrap .working-work-items,
+  .working-work-items {
     padding: 20px;
   }
 }
 
-.working-wrap .working-work-items:hover .thumb img {
+.working-wrap .working-work-items:hover .thumb img,
+.working-work-items:hover .thumb img {
   transform: scale(1.1);
 }
 
-.working-wrap .working-work-items:hover .working-content h4 a {
+.working-wrap .working-work-items:hover .working-content h4 a,
+.working-work-items:hover .working-content h4 a {
   color: var(--pwhite) !important;
+}
+
+.project-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  color: var(--pra);
+  font-size: 13px;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.project-link-btn:hover {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.project-link-btn.project-link-live {
+  border-color: rgba(253, 249, 207, 0.3);
+  color: #fdf9cf;
+}
+
+.project-link-btn.project-link-live:hover {
+  border-color: #fdf9cf;
+  background: rgba(253, 249, 207, 0.08);
+  color: #fdf9cf;
 }
 
 .select-work {
@@ -6658,7 +6695,7 @@ p {
 /* Hero Profile Image Override */
 .hero-profile-image-wrap {
   width: 100%;
-  max-width: 580px;
+  max-width: 660px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6741,7 +6778,7 @@ p {
 .hero-profile-img {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 630px;
   /* Aligns perfectly with left column height */
   object-fit: contain;
   border-radius: 20px;
@@ -6772,7 +6809,9 @@ p {
 
 .hero-profile-card-layout {
   width: 100%;
-  max-width: 580px;
+  max-width: 660px;
+  margin-left: auto;
+  padding-left: 30px;
 }
 
 .profile-details {

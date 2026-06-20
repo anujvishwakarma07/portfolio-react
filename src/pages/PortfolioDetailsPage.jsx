@@ -4,52 +4,46 @@ import { useParams } from 'react-router-dom'
 // Centralized project data details
 const projectsDetailList = [
   {
-    id: '1',
-    title: 'Growthary',
-    subtitle: 'Unified Ecosystem',
-    date: 'March 25th, 2026',
-    client: 'Growthary Team',
-    service: 'SaaS Platform, Branding, UI/UX Design',
-    description: 'Growthary is a unified ecosystem that helps SaaS startups track, manage, and scale their services. Developed with React, Node, and MongoDB, it features real-time data pipelines and rich user analytics.',
-    link: 'https://github.com/anujvishwakarma07',
-    badge: 'SaaS Platform',
-    images: ['/assets/img/project/pd1.png', '/assets/img/project/pd2.png']
+    id: 'havynlife',
+    title: 'HAVYNLIFE',
+    subtitle: 'Airbnb-Inspired Platform',
+    date: '2025',
+    client: 'Personal Project',
+    service: 'Full-Stack Web Application',
+    techStack: 'Node.js · Express · MongoDB · EJS',
+    description: 'Developed a Full-Stack Web Application inspired by Airbnb, implementing 10+ REST API endpoints with complete CRUD Operations for listings and reviews, enforcing ownership-based Authorization via middleware. Implemented dual-strategy Authentication using Passport.js (Google OAuth 2.0 and local strategies) with secure Session Management via Express Sessions. Integrated Cloudinary for image uploads (up to 5 per listing), Mapbox for geolocation mapping and MongoDB Atlas for cloud database management.',
+    github: 'https://github.com/anujvishwakarma07/HavynLife',
+    live: 'https://havynlife.onrender.com/',
+    badge: 'Full Stack',
+    images: ['/assets/img/blog/havynlife.png']
   },
   {
-    id: '2',
-    title: 'UpNexa',
-    subtitle: 'SaaS Platform',
-    date: 'September 12th, 2025',
-    client: 'UpNexa Corp',
-    service: 'Web App, UI/UX Design, Front-end',
-    description: 'UpNexa is a cloud-based dashboard facilitating seamless financial planning and metric tracking for digital businesses. Integrated with automated report generation and invoice processing.',
-    link: 'https://github.com/anujvishwakarma07',
-    badge: 'Web App',
-    images: ['/assets/img/project/pd3.png', '/assets/img/project/pd4.png']
+    id: 'tanviqgpt',
+    title: 'TANVIQGPT',
+    subtitle: 'AI Chat Application',
+    date: '2025',
+    client: 'Personal Project',
+    service: 'Full-Stack AI Application',
+    techStack: 'React.js · Node.js · Express.js · MongoDB Atlas · OpenRouter API',
+    description: 'Built a Full-Stack AI Application with AI/LLM API integration via OpenRouter API, delivering real-time conversational AI responses in a modern dark-mode UI. Designed a thread-based conversation schema in MongoDB with unique thread IDs, maintaining complete message history for multiple concurrent users with user and assistant roles. Developed 8+ REST APIs using Node.js and Express.js for CRUD operations on chat threads; deployed backend on Render and frontend on Vercel.',
+    github: 'https://github.com/anujvishwakarma07/TanviqGpt',
+    live: 'https://tanviq-gpt.vercel.app/',
+    badge: 'AI / LLM',
+    images: ['/assets/img/blog/tanviqgpt.png']
   },
   {
-    id: '3',
-    title: 'KaryaNexus',
-    subtitle: 'Digital Solutions',
-    date: 'January 10th, 2026',
-    client: 'KaryaNexus LLC',
-    service: 'React Development, Backend APIs',
-    description: 'KaryaNexus bridges productivity management with AI assistant agents. Designed to automate task routing, team scheduling, and document synchronization across workspaces.',
-    link: 'https://github.com/anujvishwakarma07',
-    badge: 'Web App',
-    images: ['/assets/img/project/pd1.png', '/assets/img/project/pd4.png']
-  },
-  {
-    id: '4',
-    title: 'Brand Revitalization',
-    subtitle: 'Color Design',
-    date: 'July 15th, 2024',
-    client: 'Creative Brand Co.',
-    service: 'Color Palette Design, Style Guide Development',
-    description: 'A complete overhaul of corporate style guides, implementing custom UI color tokens and interactive style frameworks to drive brand consistency.',
-    link: 'https://github.com/anujvishwakarma07',
-    badge: 'Color Design',
-    images: ['/assets/img/project/pd2.png', '/assets/img/project/pd3.png']
+    id: 'upnexa',
+    title: 'UPNEXA',
+    subtitle: 'Startup Listing Platform',
+    date: '2025',
+    client: 'Personal Project',
+    service: 'Modern Web Application with SSR/ISR/SSG',
+    techStack: 'Next.js 15 · React 19 · Sanity CMS · Tailwind CSS',
+    description: 'Built a modern startup listing platform using Next.js 15 App Router with SSR, ISR, and SSG for optimized SEO performance and 95+ Lighthouse score. Integrated Sanity CMS as headless CMS for real-time content management with custom GROQ queries for advanced filtering and search with strongly typed schemas. Implemented OAuth via NextAuth.js with GitHub provider, Zod schema validation, and Sentry for error tracking and performance monitoring, deployed on Vercel.',
+    github: 'https://github.com/anujvishwakarma07/UpNexa',
+    live: 'https://upnexa.vercel.app/',
+    badge: 'Next.js',
+    images: ['/assets/img/blog/upnexa.png']
   }
 ]
 
@@ -92,12 +86,12 @@ function PortfolioDetailsPage() {
                 <div className="des-dated-area">
                   <div className="date-border"></div>
                   <div className="dates-item">
-                    <span className="date-text">Date:</span>
+                    <span className="date-text">Year:</span>
                     <span className="pra-clr fw-400">{activeProject.date}</span>
                   </div>
                   <div className="date-border"></div>
                   <div className="dates-item">
-                    <span className="date-text">Client:</span>
+                    <span className="date-text">Type:</span>
                     <span className="pra-clr fw-400">{activeProject.client}</span>
                   </div>
                   <div className="date-border"></div>
@@ -106,18 +100,31 @@ function PortfolioDetailsPage() {
                     <p className="pra-clr fw-400">{activeProject.service}</p>
                   </div>
                   <div className="date-border"></div>
+                  <div className="dates-item">
+                    <span className="date-text">Tech Stack:</span>
+                    <p className="pra-clr fw-400">{activeProject.techStack}</p>
+                  </div>
+                  <div className="date-border"></div>
                   <div className="dates-item d-grid gap-lg-4 gap-3">
                     <span className="date-text">Description:</span>
                     <p className="pra-clr fw-400 pra-one">{activeProject.description}</p>
                     <div className="date-border"></div>
-                    <div className="visit-btn mt-xxl-5 mt-4">
+                    <div className="visit-btn mt-xxl-5 mt-4 d-flex gap-3 flex-wrap">
                       <a 
-                        href={activeProject.link} 
+                        href={activeProject.github} 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="cmn-shadow round100 py-xxl-3 py-3 px-xxl-5 px-4 white fz-16"
                       >
-                        Visit Link
+                        <i className="bi bi-github me-2"></i>GitHub
+                      </a>
+                      <a 
+                        href={activeProject.live} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="cmn-shadow round100 py-xxl-3 py-3 px-xxl-5 px-4 white fz-16"
+                      >
+                        <i className="bi bi-box-arrow-up-right me-2"></i>Live Demo
                       </a>
                     </div>
                   </div>

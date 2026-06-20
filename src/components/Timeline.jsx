@@ -28,11 +28,32 @@ function Timeline() {
                   <div className="educa-head">
                     <h4>
                       <a href="#" className="white">
+                        Full Stack Developer Intern - Optiflow Technologies
+                      </a>
+                    </h4>
+                    <span className="pra-clr">
+                      ( March 2026 - May 2026 ) | Gopal Nagar, Kanpur (On-site)
+                    </span>
+                  </div>
+                  <p className="pra-clr">
+                    Built REST APIs using PHP Laravel and React.js for client and customer authentication, developed a CMS admin panel for website content management with role-based access control.
+                  </p>
+                </div>
+              </div>
+              {/* Experience Item 2 */}
+              <div className="education-item-row">
+                <div className="edu-dot-wrap">
+                  <div className="edu-l1"><i className="bi bi-dot"></i></div>
+                </div>
+                <div className="education-item cmn-shadow round8 w-100">
+                  <div className="educa-head">
+                    <h4>
+                      <a href="#" className="white">
                         AI/ML Intern - Infosys Springboard 6.0
                       </a>
                     </h4>
                     <span className="pra-clr">
-                      ( December 2025 - Present )
+                      ( December 2025 - February 2026 )
                     </span>
                   </div>
                   <p className="pra-clr">
@@ -41,7 +62,7 @@ function Timeline() {
                   </p>
                 </div>
               </div>
-              {/* Experience Item 2 */}
+              {/* Experience Item 3 */}
               <div className="education-item-row">
                 <div className="edu-dot-wrap">
                   <div className="edu-l1"><i className="bi bi-dot"></i></div>
@@ -63,7 +84,7 @@ function Timeline() {
                   </p>
                 </div>
               </div>
-              {/* Experience Item 3 */}
+              {/* Experience Item 4 */}
               <div className="education-item-row">
                 <div className="edu-dot-wrap">
                   <div className="edu-l1"><i className="bi bi-dot"></i></div>
