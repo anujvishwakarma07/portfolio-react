@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Header() {
   return (
@@ -35,11 +36,11 @@ function Header() {
 
         {/* CTA Buttons */}
         <div className="header-cta d-flex gap-2 align-items-center">
-          <a href="/Anuj_Vishwakarma_Resume.pdf" download className="nav-secondary-btn d-inline-flex align-items-center gap-1">
+          <Link to="/resume" className="nav-secondary-btn d-inline-flex align-items-center gap-1">
             <i className="bi bi-download" style={{ fontSize: '14px' }}></i>
             <span className="d-none d-lg-inline">Download CV</span>
             <span className="d-inline d-lg-none">CV</span>
-          </a>
+          </Link>
           <a href="#conts" className="nav-cta-btn">Get in touch ↗</a>
         </div>
       </div>

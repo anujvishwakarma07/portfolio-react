@@ -11,6 +11,7 @@ import BlogPage from "./pages/BlogPage"
 import BlogDetailsPage from "./pages/BlogDetailsPage"
 import PortfolioDetailsPage from "./pages/PortfolioDetailsPage"
 import NotFoundPage from "./pages/NotFoundPage"
+import ResumePage from "./pages/ResumePage"
 import { Agentation } from "agentation";
 import Preloader from "./components/Preloader";
 
@@ -58,6 +59,8 @@ function App() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogDetailsPage />} />
         <Route path="/Portfolio/:id" element={<PortfolioDetailsPage />} />
+        <Route path="/resume" element={<ResumePage />} />
+        <Route path="/Resume" element={<ResumePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
