@@ -1,12 +1,21 @@
 import React, { useState } from 'react'
+import { useLocation } from 'react-router-dom'
 
 function Footer() {
+  const location = useLocation()
+
+  if (location.pathname.startsWith('/admin')) {
+    return null
+  }
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   })
+  const [statusMsg, setStatusMsg] = useState({ type: '', text: '' })
+  const [loading, setLoading] = useState(false)
 
   const handleChange = (e) => {
     setFormData({
@@ -15,11 +24,30 @@ function Footer() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // For now, we alert the user. In the future, you can connect this to a backend API or email service!
-    alert(`Thank you ${formData.name || 'there'}! Your message has been sent successfully (Mocked).`)
-    setFormData({ name: '', email: '', subject: '', message: '' })
+    setLoading(true)
+    setStatusMsg({ type: '', text: '' })
+
+    try {
+      const response = await fetch('/api/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+      const data = await response.json()
+
+      if (response.ok) {
+        setStatusMsg({ type: 'success', text: `Thank you, ${formData.name}! Your message has been sent successfully.` })
+        setFormData({ name: '', email: '', subject: '', message: '' })
+      } else {
+        setStatusMsg({ type: 'error', text: data.error || 'Failed to send message. Please try again.' })
+      }
+    } catch (error) {
+      setStatusMsg({ type: 'error', text: 'Server error. Please try again later.' })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -95,10 +123,26 @@ function Footer() {
                     required
                   ></textarea>
                 </div>
+                {statusMsg.text && (
+                  <div className="col-lg-12">
+                    <div style={{
+                      padding: '12px 18px',
+                      borderRadius: '8px',
+                      fontSize: '14px',
+                      fontWeight: '400',
+                      background: statusMsg.type === 'success' ? 'rgba(46, 204, 113, 0.15)' : 'rgba(231, 76, 60, 0.15)',
+                      border: statusMsg.type === 'success' ? '1px solid rgba(46, 204, 113, 0.3)' : '1px solid rgba(231, 76, 60, 0.3)',
+                      color: statusMsg.type === 'success' ? '#2ecc71' : '#e74c3c',
+                      marginTop: '5px'
+                    }}>
+                      {statusMsg.text}
+                    </div>
+                  </div>
+                )}
                 <div className="col-lg-12">
                   <div className="btns">
-                    <button type="submit" className="cmn-btn">
-                      Send Message
+                    <button type="submit" className="cmn-btn" disabled={loading}>
+                      {loading ? 'Sending...' : 'Send Message'}
                     </button>
                   </div>
                 </div>

@@ -3,7 +3,7 @@ import Header from "./components/Header"
 import Hero from "./components/Hero"
 import AOS from 'aos' // 1. Import AOS JS library
 import Footer from "./components/Footer"
-import {BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 import Home from "./pages/Home"
 import ServicesPage from "./pages/ServicesPage"
 import PortfolioPage from "./pages/PortfolioPage"
@@ -14,6 +14,17 @@ import NotFoundPage from "./pages/NotFoundPage"
 import ResumePage from "./pages/ResumePage"
 import { Agentation } from "agentation";
 import Preloader from "./components/Preloader";
+
+// Admin Section Imports
+import AdminLayout from "./components/AdminLayout"
+import AdminLogin from "./pages/admin/AdminLogin"
+import AdminDashboard from "./pages/admin/AdminDashboard"
+import AdminProjects from "./pages/admin/AdminProjects"
+import AdminContent from "./pages/admin/AdminContent"
+import AdminMessages from "./pages/admin/AdminMessages"
+import AdminFeedbacks from "./pages/admin/AdminFeedbacks"
+import AnalyticsTracker from "./components/AnalyticsTracker"
+import FeedbackWidget from "./components/FeedbackWidget"
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(() => {
@@ -50,7 +61,12 @@ function App() {
   return (
     <Router>
       {showPreloader && <Preloader onComplete={handlePreloaderComplete} />}
+      
+      {/* Global Audience Telemetry Tracker */}
+      <AnalyticsTracker />
 
+      {/* Floating Visitor Feedback Widget */}
+      <FeedbackWidget />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -61,9 +77,20 @@ function App() {
         <Route path="/Portfolio/:id" element={<PortfolioDetailsPage />} />
         <Route path="/resume" element={<ResumePage />} />
         <Route path="/Resume" element={<ResumePage />} />
+
+        {/* Admin Control Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route index element={<Navigate to="dashboard" replace />} />
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="projects" element={<AdminProjects />} />
+          <Route path="content" element={<AdminContent />} />
+          <Route path="messages" element={<AdminMessages />} />
+          <Route path="feedbacks" element={<AdminFeedbacks />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-
 
       {/* Rendering Footer */}
       <Footer />

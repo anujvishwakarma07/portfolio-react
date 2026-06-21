@@ -1,6 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function Hero() {
+  const [content, setContent] = useState({
+    status: 'CSE Graduate · SDE Intern 2026 · Open to Full-time',
+    title: 'Full Stack <i>Developer</i>. <br /> I build backend systems and <i>ship them</i>.',
+    desc: 'Worked across Node.js, React, MongoDB, and Laravel to ship auth systems, real-time apps, and AI integrations.'
+  });
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (response.ok) {
+          const data = await response.json();
+          const statusItem = data.find(item => item.section === 'hero' && item.key === 'status');
+          const titleItem = data.find(item => item.section === 'hero' && item.key === 'title');
+          const descItem = data.find(item => item.section === 'hero' && item.key === 'desc');
+
+          setContent({
+            status: statusItem ? statusItem.value : 'CSE Graduate · SDE Intern 2026 · Open to Full-time',
+            title: titleItem ? titleItem.value : 'Full Stack <i>Developer</i>. <br /> I build backend systems and <i>ship them</i>.',
+            desc: descItem ? descItem.value : 'Worked across Node.js, React, MongoDB, and Laravel to ship auth systems, real-time apps, and AI integrations.'
+          });
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic hero content:', err);
+      }
+    };
+    fetchContent();
+  }, []);
+
   return (
     <div className="hero-fullscreen-layout container">
       <div className="row align-items-center h-100 py-lg-5">
@@ -9,16 +38,12 @@ function Hero() {
         <div className="col-lg-7 col-md-12 hero-text-side">
           <div className="location-label mb-4 mb-lg-3 d-inline-flex align-items-center" data-aos="fade-down" data-aos-duration="1000">
             <span className="status-dot"></span>
-            <span>CSE Graduate · SDE Intern 2026 · Open to Full-time</span>
+            <span dangerouslySetInnerHTML={{ __html: content.status }}></span>
           </div>
 
-          <h1 className="hero-main-title white mb-4" data-aos="fade-right" data-aos-duration="1200">
-            Full Stack <i>Developer</i>. <br /> I build backend systems and <i>ship them</i>.
-          </h1>
+          <h1 className="hero-main-title white mb-4" data-aos="fade-right" data-aos-duration="1200" dangerouslySetInnerHTML={{ __html: content.title }}></h1>
 
-          <p className="hero-intro-desc pra-clr mb-5" data-aos="fade-right" data-aos-duration="1400">
-            Worked across Node.js, React, MongoDB, and Laravel to ship auth systems, real-time apps, and AI integrations.
-          </p>
+          <p className="hero-intro-desc pra-clr mb-5" data-aos="fade-right" data-aos-duration="1400" dangerouslySetInnerHTML={{ __html: content.desc }}></p>
 
           {/* Quick Metrics at bottom left */}
           <div className="hero-metrics-grid d-flex flex-wrap gap-5 mt-4" data-aos="fade-up" data-aos-duration="1500">

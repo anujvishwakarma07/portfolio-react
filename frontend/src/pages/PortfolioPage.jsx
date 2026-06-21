@@ -4,14 +4,12 @@ import Sponsors from '../components/Sponsors'
 
 function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('Show All')
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    document.title = 'Portfolio | Anuj Vishwakarma – Full Stack Developer'
-  }, [])
-  // List of actual available projects
-  const projects = [
+  const fallbackProjects = [
     {
-      id: 'havynlife',
+      _id: 'havynlife',
       title: 'HAVYNLIFE',
       subtitle: 'Airbnb-Inspired Platform',
       category: 'Full Stack',
@@ -20,7 +18,7 @@ function PortfolioPage() {
       badge: 'Full Stack'
     },
     {
-      id: 'tanviqgpt',
+      _id: 'tanviqgpt',
       title: 'TANVIQGPT',
       subtitle: 'AI Chat Application',
       category: 'AI / LLM',
@@ -29,7 +27,7 @@ function PortfolioPage() {
       badge: 'AI / LLM'
     },
     {
-      id: 'upnexa',
+      _id: 'upnexa',
       title: 'UPNEXA',
       subtitle: 'Startup Listing Platform',
       category: 'Next.js',
@@ -39,10 +37,39 @@ function PortfolioPage() {
     }
   ]
 
+  useEffect(() => {
+    document.title = 'Portfolio | Anuj Vishwakarma – Full Stack Developer'
+    
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        if (response.ok) {
+          const data = await response.json();
+          setProjects(data);
+        } else {
+          setProjects(fallbackProjects);
+        }
+      } catch (err) {
+        console.warn('Could not fetch portfolio projects:', err);
+        setProjects(fallbackProjects);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  const projectList = projects.length > 0 ? projects : fallbackProjects;
+
   // Filter projects dynamically based on the selected tab
   const filteredProjects = activeTab === 'Show All'
-    ? projects
-    : projects.filter(project => project.category === activeTab)
+    ? projectList
+    : projectList.filter(project => project.category === activeTab)
+
+  // Compute tabs dynamically from unique project categories
+  const tabs = ['Show All', ...new Set(projectList.map(p => p.category))];
+
 
   return (
     <>
@@ -70,7 +97,7 @@ function PortfolioPage() {
               
               {/* Tab Filters */}
               <ul className="tablinks" data-aos="fade-down" data-aos-duration="2000">
-                {['Show All', 'Full Stack', 'Next.js', 'AI / LLM'].map(tab => (
+                {tabs.map(tab => (
                   <li 
                     key={tab} 
                     className={`nav-links ${activeTab === tab ? 'active' : ''}`}
@@ -88,7 +115,7 @@ function PortfolioPage() {
                 <div className="row g-4">
                   {filteredProjects.map(project => (
                     <div 
-                      key={project.id} 
+                      key={project._id} 
                       className="col-lg-4 col-md-6"
                     >
                       <div className="protfolio-porject-item d-center">
@@ -100,12 +127,12 @@ function PortfolioPage() {
                           <div className="project-cont-box d-center w-100 h-100 position-relative">
                             <div className="boxes text-center">
                               <h4>
-                                <Link to={`/Portfolio/${project.id}`} className="title">
+                                <Link to={`/Portfolio/${project._id}`} className="title">
                                   <span className="d-block">{project.title}</span>
                                   {project.subtitle}
                                 </Link>
                               </h4>
-                              <span className="ui-badge">{project.badge}</span>
+                              {project.badge && <span className="ui-badge">{project.badge}</span>}
                             </div>
                           </div>
                         </div>

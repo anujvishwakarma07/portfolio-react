@@ -1,7 +1,35 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
 
 function About() {
+  const [content, setContent] = useState({
+    subheading: 'CSE Graduate and <i>Full Stack Developer</i>. I design, build, and deploy <i>MERN & Next.js</i> applications with secure auth, real-time data, and <i>AI-powered</i> features.',
+    para1: "I'm Anuj from UP, India, focused on building solid, backend-heavy full stack applications using Node.js, React, MongoDB, and Laravel. Over the last 2 years, I've shipped Havynlife and TanviqGPT, implementing secure auth, live Mapbox mapping, and OpenAI integrations.",
+    para2: 'My approach: DB-first design, clean code, and optimization. If it breaks in production or runs slow, it\'s not done. Currently leveling up in DSA and system design.'
+  });
+
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        const response = await fetch('/api/content');
+        if (response.ok) {
+          const data = await response.json();
+          const subheadingItem = data.find(item => item.section === 'about' && item.key === 'subheading');
+          const para1Item = data.find(item => item.section === 'about' && item.key === 'para1');
+          const para2Item = data.find(item => item.section === 'about' && item.key === 'para2');
+
+          setContent({
+            subheading: subheadingItem ? subheadingItem.value : 'CSE Graduate and <i>Full Stack Developer</i>. I design, build, and deploy <i>MERN & Next.js</i> applications with secure auth, real-time data, and <i>AI-powered</i> features.',
+            para1: para1Item ? para1Item.value : "I'm Anuj from UP, India, focused on building solid, backend-heavy full stack applications using Node.js, React, MongoDB, and Laravel. Over the last 2 years, I've shipped Havynlife and TanviqGPT, implementing secure auth, live Mapbox mapping, and OpenAI integrations.",
+            para2: para2Item ? para2Item.value : 'My approach: DB-first design, clean code, and optimization. If it breaks in production or runs slow, it\'s not done. Currently leveling up in DSA and system design.'
+          });
+        }
+      } catch (err) {
+        console.warn('Could not fetch dynamic about content:', err);
+      }
+    };
+    fetchContent();
+  }, []);
+
   return (
     <section className="about-section-v01 check-box-style mb-common pt-100 pb-100" id="about">
       <div className="container">
@@ -10,9 +38,7 @@ function About() {
             <span className="section-sub" data-aos="fade-down" data-aos-duration="1000">
               About Me
             </span>
-            <h3 className="mt-3" data-aos="fade-down" data-aos-duration="1500">
-              CSE Graduate and <i>Full Stack Developer</i>. I design, build, and deploy <i>MERN & Next.js</i> applications with secure auth, real-time data, and <i>AI-powered</i> features.
-            </h3>
+            <h3 className="mt-3" data-aos="fade-down" data-aos-duration="1500" dangerouslySetInnerHTML={{ __html: content.subheading }}></h3>
           </div>
         </div>
         <div className="row g-lg-4 g-4 justify-content-between">
@@ -38,12 +64,8 @@ function About() {
                     <img src="/assets/img/blog/arrow-down.png" alt="img" />
                   </a>
                   <div className="right-comp">
-                    <p className="pra-clr mb-3">
-                      I'm Anuj from UP, India, focused on building solid, backend-heavy full stack applications using Node.js, React, MongoDB, and Laravel. Over the last 2 years, I've shipped Havynlife and TanviqGPT, implementing secure auth, live Mapbox mapping, and OpenAI integrations.
-                    </p>
-                    <p className="pra-clr mb-4">
-                      My approach: DB-first design, clean code, and optimization. If it breaks in production or runs slow, it's not done. Currently leveling up in DSA and system design.
-                    </p>
+                    <p className="pra-clr mb-3" dangerouslySetInnerHTML={{ __html: content.para1 }}></p>
+                    <p className="pra-clr mb-4" dangerouslySetInnerHTML={{ __html: content.para2 }}></p>
                     <ul className="profile-social-links d-flex gap-3 mt-4 mb-4 justify-content-start flex-wrap">
                       <li>
                         <a href="https://github.com/anujvishwakarma07" target="_blank" rel="noopener noreferrer" aria-label="GitHub">

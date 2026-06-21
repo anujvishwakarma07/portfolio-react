@@ -32,7 +32,7 @@ function Home() {
             <Services />
             <Sponsors />
             <Works />
-            {/* <Testimonials /> */}
+            <Testimonials />
             {/* <Blogs /> */}
         </>
     )
