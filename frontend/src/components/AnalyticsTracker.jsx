@@ -42,6 +42,76 @@ function parseUserAgent() {
   return { browser, os, device };
 }
 
+// Fetch client geolocation with robust fallbacks
+const getGeoInfo = async () => {
+  const cached = sessionStorage.getItem('visitor_geo_info');
+  if (cached) {
+    try {
+      return JSON.parse(cached);
+    } catch (e) {
+      // Ignored cache corruptions
+    }
+  }
+
+  // Provider 1: FreeIPAPI (highly accurate, fast, no limits)
+  try {
+    const res = await fetch('https://freeipapi.com/api/json');
+    if (res.ok) {
+      const data = await res.json();
+      const geo = {
+        ip: data.ipAddress || 'Unknown',
+        country: data.countryName || 'Unknown',
+        city: data.cityName || 'Unknown',
+        region: data.regionName || 'Unknown'
+      };
+      sessionStorage.setItem('visitor_geo_info', JSON.stringify(geo));
+      return geo;
+    }
+  } catch (err) {
+    console.warn('FreeIPAPI failed, attempting backup provider...', err);
+  }
+
+  // Provider 2: IPWho.is (reliable backup, free 10k/month)
+  try {
+    const res = await fetch('https://ipwho.is/');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success) {
+        const geo = {
+          ip: data.ip || 'Unknown',
+          country: data.country || 'Unknown',
+          city: data.city || 'Unknown',
+          region: data.region || 'Unknown'
+        };
+        sessionStorage.setItem('visitor_geo_info', JSON.stringify(geo));
+        return geo;
+      }
+    }
+  } catch (err) {
+    console.warn('IPWho.is failed, attempting final fallback...', err);
+  }
+
+  // Provider 3: IPAPI.co (legacy fallback)
+  try {
+    const res = await fetch('https://ipapi.co/json/');
+    if (res.ok) {
+      const data = await res.json();
+      const geo = {
+        ip: data.ip || 'Unknown',
+        country: data.country_name || 'Unknown',
+        city: data.city || 'Unknown',
+        region: data.region || 'Unknown'
+      };
+      sessionStorage.setItem('visitor_geo_info', JSON.stringify(geo));
+      return geo;
+    }
+  } catch (err) {
+    console.warn('All geolocation providers failed to resolve client IP.', err);
+  }
+
+  return { ip: 'Unknown', country: 'Unknown', city: 'Unknown', region: 'Unknown' };
+};
+
 export default function AnalyticsTracker() {
   const location = useLocation();
   const socketRef = useRef(null);
@@ -56,73 +126,7 @@ export default function AnalyticsTracker() {
 
   const { browser, os, device } = parseUserAgent();
 
-  // Async function to resolve geolocation and submit tracking
-  const trackVisit = async (path) => {
-    // If it's an admin page, do not record in visitor logs
-    if (path.startsWith('/admin')) return;
-
-    try {
-      let geoInfo = null;
-      const cachedGeo = sessionStorage.getItem('visitor_geo_info');
-      
-      if (cachedGeo) {
-        geoInfo = JSON.parse(cachedGeo);
-      } else {
-        // Query free geolocation API
-        const response = await fetch('https://ipapi.co/json/');
-        if (response.ok) {
-          const data = await response.json();
-          geoInfo = {
-            ip: data.ip,
-            country: data.country_name,
-            city: data.city,
-            region: data.region
-          };
-          sessionStorage.setItem('visitor_geo_info', JSON.stringify(geoInfo));
-        }
-      }
-
-      // Record page view in DB
-      await fetch(`${API_BASE}/api/analytics/track`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId,
-          path,
-          referrer: document.referrer || '',
-          browser,
-          os,
-          device,
-          ip: geoInfo?.ip || 'Unknown',
-          country: geoInfo?.country || 'Localhost',
-          city: geoInfo?.city || 'Localhost',
-          region: geoInfo?.region || 'Localhost'
-        })
-      });
-    } catch (error) {
-      console.warn('Analytics tracking error:', error.message);
-      
-      // Attempt to track page view with mock info on fallback
-      try {
-        await fetch(`${API_BASE}/api/analytics/track`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            sessionId,
-            path,
-            referrer: document.referrer || '',
-            browser,
-            os,
-            device
-          })
-        });
-      } catch (err) {
-        console.error('Fallback tracking failed:', err);
-      }
-    }
-  };
-
-  // Setup WebSocket connection for live tracking
+  // Setup WebSocket connection for live tracking & Page events
   useEffect(() => {
     // Prevent tracking on admin namespace paths
     if (location.pathname.startsWith('/admin')) {
@@ -134,42 +138,67 @@ export default function AnalyticsTracker() {
       return;
     }
 
-    if (!socketRef.current) {
-      const socketUrl = SOCKET_URL;
-      socketRef.current = io(socketUrl, {
-        transports: ['websocket', 'polling']
-      });
+    const initTracking = async () => {
+      // 1. Resolve geolocation first
+      const geoInfo = await getGeoInfo();
 
-      socketRef.current.on('connect', () => {
-        let geoInfo = { ip: 'Unknown', country: 'Localhost', city: 'Localhost' };
-        const cachedGeo = sessionStorage.getItem('visitor_geo_info');
-        if (cachedGeo) geoInfo = JSON.parse(cachedGeo);
-
-        // Register session on socket server
-        socketRef.current.emit('user-register', {
-          sessionId,
-          path: location.pathname,
-          device,
-          browser,
-          ip: geoInfo.ip,
-          location: geoInfo.city !== 'Localhost' ? `${geoInfo.city}, ${geoInfo.country}` : 'Localhost'
+      // 2. Fire the REST tracking to write to MongoDB
+      try {
+        await fetch(`${API_BASE}/api/analytics/track`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            sessionId,
+            path: location.pathname,
+            referrer: document.referrer || '',
+            browser,
+            os,
+            device,
+            ip: geoInfo.ip !== 'Unknown' ? geoInfo.ip : undefined, // let backend fallback to headers if client fetch failed
+            country: geoInfo.country !== 'Unknown' ? geoInfo.country : undefined,
+            city: geoInfo.city !== 'Unknown' ? geoInfo.city : undefined,
+            region: geoInfo.region !== 'Unknown' ? geoInfo.region : undefined
+          })
         });
-        isRegisteredRef.current = true;
-      });
-    } else if (isRegisteredRef.current) {
-      // Emit navigate update on route changes
-      socketRef.current.emit('user-navigate', {
-        path: location.pathname
-      });
-    }
+      } catch (error) {
+        console.warn('Analytics REST log error:', error.message);
+      }
 
-    // Fire the REST tracking
-    trackVisit(location.pathname);
+      // 3. Connect/Emit user register details on WebSocket for live admin view
+      if (!socketRef.current) {
+        const socketUrl = SOCKET_URL;
+        socketRef.current = io(socketUrl, {
+          transports: ['websocket', 'polling']
+        });
 
-    // Clean up on component unmount
-    return () => {
-      // We don't disconnect socket immediately unless navigating to admin
+        socketRef.current.on('connect', () => {
+          let userLocation = 'Unknown Location';
+          if (geoInfo.city !== 'Unknown' && geoInfo.city !== 'Localhost') {
+            userLocation = `${geoInfo.city}, ${geoInfo.country}`;
+          } else if (geoInfo.country !== 'Unknown' && geoInfo.country !== 'Localhost') {
+            userLocation = geoInfo.country;
+          }
+
+          socketRef.current.emit('user-register', {
+            sessionId,
+            path: location.pathname,
+            device,
+            browser,
+            ip: geoInfo.ip !== 'Unknown' ? geoInfo.ip : undefined,
+            location: userLocation
+          });
+          isRegisteredRef.current = true;
+        });
+      } else if (isRegisteredRef.current) {
+        // Emit navigate update on route changes
+        socketRef.current.emit('user-navigate', {
+          path: location.pathname
+        });
+      }
     };
+
+    initTracking();
+
   }, [location.pathname]);
 
   // Global cleanup on main app destroy
