@@ -14,6 +14,17 @@ const generateToken = (id) => {
     })
 }
 
+// @route   GET /api/auth/status
+// @desc    Check if an admin account already exists
+router.get('/status', async (req, res) => {
+    try {
+        const adminCount = await Admin.countDocuments();
+        res.json({ hasAdmin: adminCount > 0 });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // @route   POST /api/auth/register
 // @desc    Register an admin account (Usually run once to initialize)
 router.post('/register', async (req, res) => {
