@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_BASE } from '../../config';
 
 export default function AdminContent() {
   const [loading, setLoading] = useState(true);
@@ -28,7 +29,7 @@ export default function AdminContent() {
   // Fetch current content values
   const fetchContent = async () => {
     try {
-      const response = await fetch('/api/content');
+      const response = await fetch(`${API_BASE}/api/content`);
       if (response.ok) {
         const data = await response.json();
         
@@ -76,7 +77,7 @@ export default function AdminContent() {
       const savePromises = keys.map(key => {
         const stateKey = `${sectionName}_${key}`;
         const value = content[stateKey];
-        return fetch('/api/content', {
+        return fetch(`${API_BASE}/api/content`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

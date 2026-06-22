@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { API_BASE, SOCKET_URL } from '../config';
 
 // Simple client-side UserAgent parser
 function parseUserAgent() {
@@ -82,7 +83,7 @@ export default function AnalyticsTracker() {
       }
 
       // Record page view in DB
-      await fetch('/api/analytics/track', {
+      await fetch(`${API_BASE}/api/analytics/track`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -103,7 +104,7 @@ export default function AnalyticsTracker() {
       
       // Attempt to track page view with mock info on fallback
       try {
-        await fetch('/api/analytics/track', {
+        await fetch(`${API_BASE}/api/analytics/track`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -134,7 +135,7 @@ export default function AnalyticsTracker() {
     }
 
     if (!socketRef.current) {
-      const socketUrl = import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin;
+      const socketUrl = SOCKET_URL;
       socketRef.current = io(socketUrl, {
         transports: ['websocket', 'polling']
       });

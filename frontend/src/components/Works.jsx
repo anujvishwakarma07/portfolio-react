@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { API_BASE } from '../config'
 
 function Works() {
   const [projects, setProjects] = useState([]);
@@ -41,7 +42,7 @@ function Works() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects');
+        const response = await fetch(`${API_BASE}/api/projects`);
         if (response.ok) {
           const data = await response.json();
           // Get the newest 3 projects

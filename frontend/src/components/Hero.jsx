@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { API_BASE } from '../config'
 
 function Hero() {
   const [content, setContent] = useState({
@@ -10,7 +11,7 @@ function Hero() {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch('/api/content');
+        const response = await fetch(`${API_BASE}/api/content`);
         if (response.ok) {
           const data = await response.json();
           const statusItem = data.find(item => item.section === 'hero' && item.key === 'status');

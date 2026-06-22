@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
+import { API_BASE, SOCKET_URL } from '../../config';
 
 export default function AdminFeedbacks() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -12,7 +13,7 @@ export default function AdminFeedbacks() {
   const fetchFeedbacks = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('/api/feedback', {
+      const response = await fetch(`${API_BASE}/api/feedback`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -34,7 +35,7 @@ export default function AdminFeedbacks() {
     fetchFeedbacks();
 
     // Establish WebSocket subscription for live review prepending
-    const socketUrl = import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin;
+    const socketUrl = SOCKET_URL;
     const socket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });
@@ -61,7 +62,7 @@ export default function AdminFeedbacks() {
     const newApprovedState = !currentApproved;
 
     try {
-      const response = await fetch(`/api/feedback/${id}/approve`, {
+      const response = await fetch(`${API_BASE}/api/feedback/${id}/approve`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -91,7 +92,7 @@ export default function AdminFeedbacks() {
     const token = localStorage.getItem('admin_token');
 
     try {
-      const response = await fetch(`/api/feedback/${id}`, {
+      const response = await fetch(`${API_BASE}/api/feedback/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { API_BASE } from '../../config';
 
 export default function AdminLogin() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function AdminLogin() {
     setErrorMsg('');
     setSuccessMsg('');
 
-    const endpoint = isRegisterMode ? '/api/auth/register' : '/api/auth/login';
+    const endpoint = isRegisterMode ? `${API_BASE}/api/auth/register` : `${API_BASE}/api/auth/login`;
 
     try {
       const response = await fetch(endpoint, {

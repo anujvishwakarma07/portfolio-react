@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination, Autoplay } from 'swiper/modules'
+import { API_BASE } from '../config'
 
 function Testimonials() {
   const [reviews, setReviews] = useState([]);
@@ -39,7 +40,7 @@ function Testimonials() {
   useEffect(() => {
     const fetchApprovedReviews = async () => {
       try {
-        const response = await fetch('/api/feedback/approved');
+        const response = await fetch(`${API_BASE}/api/feedback/approved`);
         if (response.ok) {
           const data = await response.json();
           setReviews(data);

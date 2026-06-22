@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { API_BASE } from '../config';
 
 export default function FeedbackWidget() {
   const location = useLocation();
@@ -75,7 +76,7 @@ export default function FeedbackWidget() {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/feedback', {
+      const response = await fetch(`${API_BASE}/api/feedback`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

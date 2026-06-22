@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import Chart from 'chart.js/auto';
+import { API_BASE, SOCKET_URL } from '../../config';
 
 export default function AdminDashboard() {
   const [activeUsers, setActiveUsers] = useState([]);
@@ -19,7 +20,7 @@ export default function AdminDashboard() {
   const fetchDashboardData = async () => {
     try {
       const token = localStorage.getItem('admin_token');
-      const response = await fetch('/api/analytics/dashboard', {
+      const response = await fetch(`${API_BASE}/api/analytics/dashboard`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -43,7 +44,7 @@ export default function AdminDashboard() {
     fetchDashboardData();
 
     // Setup Socket.io client for real-time tracking
-    const socketUrl = import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin;
+    const socketUrl = SOCKET_URL;
     const socket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });

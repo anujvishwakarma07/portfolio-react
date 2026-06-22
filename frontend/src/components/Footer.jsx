@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import { API_BASE } from '../config'
 
 function Footer() {
   const location = useLocation()
@@ -30,7 +31,7 @@ function Footer() {
     setStatusMsg({ type: '', text: '' })
 
     try {
-      const response = await fetch('/api/messages', {
+      const response = await fetch(`${API_BASE}/api/messages`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)

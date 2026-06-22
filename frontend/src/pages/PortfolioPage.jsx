@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Sponsors from '../components/Sponsors'
+import { API_BASE } from '../config'
 
 function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('Show All')
@@ -42,7 +43,7 @@ function PortfolioPage() {
     
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects');
+        const response = await fetch(`${API_BASE}/api/projects`);
         if (response.ok) {
           const data = await response.json();
           setProjects(data);

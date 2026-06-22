@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
+import { API_BASE, SOCKET_URL } from '../../config';
 
 export default function AdminMessages() {
   const [messages, setMessages] = useState([]);
@@ -14,7 +15,7 @@ export default function AdminMessages() {
   const fetchMessages = async () => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch('/api/messages', {
+      const response = await fetch(`${API_BASE}/api/messages`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -36,7 +37,7 @@ export default function AdminMessages() {
     fetchMessages();
 
     // Connect to WebSocket server for real-time inbox updates
-    const socketUrl = import.meta.env.DEV ? 'http://localhost:5000' : window.location.origin;
+    const socketUrl = SOCKET_URL;
     const socket = io(socketUrl, {
       transports: ['websocket', 'polling']
     });
@@ -57,7 +58,7 @@ export default function AdminMessages() {
   const handleMarkAsRead = async (id, isRead) => {
     const token = localStorage.getItem('admin_token');
     try {
-      const response = await fetch(`/api/messages/${id}/read`, {
+      const response = await fetch(`${API_BASE}/api/messages/${id}/read`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -88,7 +89,7 @@ export default function AdminMessages() {
     setSuccessMsg('');
 
     try {
-      const response = await fetch(`/api/messages/${id}`, {
+      const response = await fetch(`${API_BASE}/api/messages/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

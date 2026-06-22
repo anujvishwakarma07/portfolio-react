@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { API_BASE } from '../../config';
 
 export default function AdminProjects() {
   const [projects, setProjects] = useState([]);
@@ -28,7 +29,7 @@ export default function AdminProjects() {
   // Fetch all projects
   const fetchProjects = async () => {
     try {
-      const response = await fetch('/api/projects');
+      const response = await fetch(`${API_BASE}/api/projects`);
       if (response.ok) {
         const data = await response.json();
         setProjects(data);
@@ -91,7 +92,7 @@ export default function AdminProjects() {
 
     const token = localStorage.getItem('admin_token');
     const method = modalMode === 'add' ? 'POST' : 'PUT';
-    const url = modalMode === 'add' ? '/api/projects' : `/api/projects/${selectedProjectId}`;
+    const url = modalMode === 'add' ? `${API_BASE}/api/projects` : `${API_BASE}/api/projects/${selectedProjectId}`;
 
     // Clean image empty string to fallback default in model
     const payload = { ...formData };
@@ -133,7 +134,7 @@ export default function AdminProjects() {
     const token = localStorage.getItem('admin_token');
 
     try {
-      const response = await fetch(`/api/projects/${projectId}`, {
+      const response = await fetch(`${API_BASE}/api/projects/${projectId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
