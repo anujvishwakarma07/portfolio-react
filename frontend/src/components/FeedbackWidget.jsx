@@ -406,7 +406,7 @@ export default function FeedbackWidget() {
                   Feedback <i>Submitted!</i>
                 </h4>
                 <p className="feedback-subheading" style={{ margin: '0' }}>
-                  Thank you for rating my portfolio. Your review has been saved and is sent directly to the admin panel.
+                  Thank you for rating my portfolio! Your feedback has been recorded. I really appreciate your time and support.
                 </p>
                 <div style={{ fontSize: '11px', color: 'var(--white)', fontWeight: 600, marginTop: '24px', letterSpacing: '0.5px' }}>
                   CLOSING WINDOW IN A MOMENT...
