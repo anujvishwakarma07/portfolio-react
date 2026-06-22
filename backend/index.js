@@ -24,8 +24,7 @@ app.use(compression());
 // SECURITY: Configure CORS to only trust specific origins (your React frontend)
 const allowedOrigins = [
     'http://localhost:5173',
-    'https://anujvishwakarma.me',
-    'https://portfolio-react-atjh.vercel.app'
+    'https://anujvishwakarma.me'
 ];
 
 app.use(cors({
