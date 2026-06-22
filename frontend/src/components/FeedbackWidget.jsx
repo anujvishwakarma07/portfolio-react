@@ -16,11 +16,11 @@ export default function FeedbackWidget() {
 
   const getRatingFeedback = (r) => {
     switch (r) {
-      case 1: return 'Needs Improvement 😕';
-      case 2: return 'Okay, could be better 😐';
-      case 3: return 'Good work! 😊';
-      case 4: return 'Great! Highly responsive! 🚀';
-      case 5: return 'Masterpiece! Exceptional! 💎';
+      case 1: return 'Needs Improvement';
+      case 2: return 'Okay, could be better';
+      case 3: return 'Good work!';
+      case 4: return 'Great! Highly responsive!';
+      case 5: return 'Masterpiece! Exceptional!';
       default: return 'Select your rating';
     }
   };
