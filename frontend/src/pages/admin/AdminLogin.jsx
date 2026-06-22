@@ -80,10 +80,10 @@ export default function AdminLogin() {
   return (
     <div style={{
       minHeight: '100vh',
-      background: '#09090b',
+      background: '#000000',
       color: '#ffffff',
       display: 'flex',
-      fontFamily: '"Inter", sans-serif',
+      fontFamily: '"Unbounded", sans-serif',
       position: 'relative',
       overflow: 'hidden'
     }}>
@@ -104,7 +104,7 @@ export default function AdminLogin() {
           position: 'absolute',
           width: '500px',
           height: '500px',
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.02) 0%, rgba(0,0,0,0) 70%)',
+          background: 'radial-gradient(circle, rgba(253, 249, 207, 0.03) 0%, rgba(0,0,0,0) 70%)',
           top: '50%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
@@ -115,7 +115,7 @@ export default function AdminLogin() {
         <div style={{
           width: '100%',
           maxWidth: '400px',
-          background: 'rgba(20, 20, 25, 0.4)',
+          background: 'rgba(255, 255, 255, 0.01)',
           border: '1px solid rgba(255, 255, 255, 0.05)',
           borderRadius: '16px',
           padding: '40px 32px',
@@ -140,13 +140,26 @@ export default function AdminLogin() {
             }}>
               <i className="bi bi-shield-lock-fill"></i>
             </div>
-            <h3 style={{ margin: '0 0 6px 0', fontSize: '22px', fontWeight: 700, letterSpacing: '-0.5px' }}>
-              {isRegisterMode ? 'Setup Admin Profile' : 'Admin Sign In'}
+            
+            <h3 style={{
+              margin: '0 0 10px 0',
+              fontSize: '26px',
+              fontWeight: 400,
+              fontFamily: '"Unbounded", sans-serif',
+              color: '#ffffff',
+              letterSpacing: '-0.5px'
+            }}>
+              {isRegisterMode ? (
+                <>Admin <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', color: '#fdf9cf' }}>Setup</span></>
+              ) : (
+                <>Admin <span style={{ fontFamily: '"Instrument Serif", serif', fontStyle: 'italic', color: '#fdf9cf' }}>Sign In</span></>
+              )}
             </h3>
-            <p style={{ margin: 0, fontSize: '13px', color: '#71717a' }}>
+            
+            <p style={{ margin: 0, fontSize: '12px', color: '#a0a09a', fontFamily: '"Unbounded", sans-serif', fontWeight: 300, lineHeight: 1.5 }}>
               {isRegisterMode 
-                ? 'Configure your credentials for first-time use' 
-                : 'Enter your credentials to access the admin engine'
+                ? 'Configure credentials for first-time use' 
+                : 'Enter your credentials to access the engine'
               }
             </p>
           </div>
@@ -155,9 +168,9 @@ export default function AdminLogin() {
           {!hasAdmin && (
             <div style={{
               display: 'flex',
-              background: 'rgba(255, 255, 255, 0.03)',
+              background: 'rgba(255, 255, 255, 0.02)',
               border: '1px solid rgba(255, 255, 255, 0.05)',
-              borderRadius: '8px',
+              borderRadius: '100px',
               padding: '4px',
               marginBottom: '24px'
             }}>
@@ -168,10 +181,11 @@ export default function AdminLogin() {
                   flex: 1,
                   padding: '8px 0',
                   background: !isRegisterMode ? '#ffffff' : 'transparent',
-                  color: !isRegisterMode ? '#000000' : '#a1a1aa',
+                  color: !isRegisterMode ? '#000000' : '#a0a09a',
                   border: 'none',
-                  borderRadius: '6px',
-                  fontSize: '13px',
+                  borderRadius: '100px',
+                  fontSize: '11px',
+                  fontFamily: '"Unbounded", sans-serif',
                   fontWeight: 500,
                   cursor: 'pointer',
                   transition: 'all 0.2s'
@@ -186,10 +200,11 @@ export default function AdminLogin() {
                   flex: 1,
                   padding: '8px 0',
                   background: isRegisterMode ? '#ffffff' : 'transparent',
-                  color: isRegisterMode ? '#000000' : '#a1a1aa',
+                  color: isRegisterMode ? '#000000' : '#a0a09a',
                   border: 'none',
-                  borderRadius: '6px',
-                  fontSize: '13px',
+                  borderRadius: '100px',
+                  fontSize: '11px',
+                  fontFamily: '"Unbounded", sans-serif',
                   fontWeight: 500,
                   cursor: 'pointer',
                   transition: 'all 0.2s'
@@ -203,36 +218,40 @@ export default function AdminLogin() {
           {/* Status Alerts */}
           {errorMsg && (
             <div style={{
-              background: 'rgba(239, 68, 68, 0.1)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
+              background: 'rgba(239, 68, 68, 0.06)',
+              border: '1px solid rgba(239, 68, 68, 0.15)',
               color: '#f87171',
               padding: '12px',
               borderRadius: '8px',
-              fontSize: '13px',
+              fontSize: '12px',
+              fontFamily: '"Unbounded", sans-serif',
+              fontWeight: 300,
               marginBottom: '20px',
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
             }}>
-              <i className="bi bi-exclamation-triangle" style={{ fontSize: '15px' }}></i>
+              <i className="bi bi-exclamation-triangle" style={{ fontSize: '14px' }}></i>
               {errorMsg}
             </div>
           )}
 
           {successMsg && (
             <div style={{
-              background: 'rgba(16, 185, 129, 0.1)',
-              border: '1px solid rgba(16, 185, 129, 0.2)',
+              background: 'rgba(16, 185, 129, 0.06)',
+              border: '1px solid rgba(16, 185, 129, 0.15)',
               color: '#34d399',
               padding: '12px',
               borderRadius: '8px',
-              fontSize: '13px',
+              fontSize: '12px',
+              fontFamily: '"Unbounded", sans-serif',
+              fontWeight: 300,
               marginBottom: '20px',
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
             }}>
-              <i className="bi bi-check-circle" style={{ fontSize: '15px' }}></i>
+              <i className="bi bi-check-circle" style={{ fontSize: '14px' }}></i>
               {successMsg}
             </div>
           )}
@@ -240,7 +259,15 @@ export default function AdminLogin() {
           {/* Form */}
           <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <div>
-              <label htmlFor="username" style={{ display: 'block', fontSize: '12px', color: '#a1a1aa', marginBottom: '8px', fontWeight: 500 }}>
+              <label htmlFor="username" style={{ 
+                display: 'block', 
+                fontSize: '11px', 
+                color: '#a0a09a', 
+                marginBottom: '8px', 
+                fontWeight: 500,
+                fontFamily: '"Unbounded", sans-serif',
+                letterSpacing: '1px'
+              }}>
                 USERNAME
               </label>
               <div style={{ position: 'relative' }}>
@@ -260,7 +287,8 @@ export default function AdminLogin() {
                     borderRadius: '8px',
                     padding: '12px 14px 12px 42px',
                     color: '#ffffff',
-                    fontSize: '14px',
+                    fontSize: '13px',
+                    fontFamily: '"Unbounded", sans-serif',
                     outline: 'none',
                     transition: 'border-color 0.2s'
                   }}
@@ -271,7 +299,15 @@ export default function AdminLogin() {
             </div>
 
             <div>
-              <label htmlFor="password" style={{ display: 'block', fontSize: '12px', color: '#a1a1aa', marginBottom: '8px', fontWeight: 500 }}>
+              <label htmlFor="password" style={{ 
+                display: 'block', 
+                fontSize: '11px', 
+                color: '#a0a09a', 
+                marginBottom: '8px', 
+                fontWeight: 500,
+                fontFamily: '"Unbounded", sans-serif',
+                letterSpacing: '1px'
+              }}>
                 PASSWORD
               </label>
               <div style={{ position: 'relative' }}>
@@ -291,7 +327,8 @@ export default function AdminLogin() {
                     borderRadius: '8px',
                     padding: '12px 14px 12px 42px',
                     color: '#ffffff',
-                    fontSize: '14px',
+                    fontSize: '13px',
+                    fontFamily: '"Unbounded", sans-serif',
                     outline: 'none',
                     transition: 'border-color 0.2s'
                   }}
@@ -307,13 +344,14 @@ export default function AdminLogin() {
               style={{
                 background: '#ffffff',
                 color: '#000000',
-                border: 'none',
-                borderRadius: '8px',
-                padding: '14px',
-                fontSize: '14px',
+                border: '1px solid #ffffff',
+                borderRadius: '100px',
+                padding: '14px 28px',
+                fontSize: '13px',
                 fontWeight: 600,
+                fontFamily: '"Unbounded", sans-serif',
                 cursor: 'pointer',
-                transition: 'all 0.2s',
+                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -322,10 +360,14 @@ export default function AdminLogin() {
                 boxShadow: '0 4px 15px rgba(255,255,255,0.1)'
               }}
               onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'transparent';
+                e.currentTarget.style.color = '#ffffff';
                 e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,255,255,0.15)';
+                e.currentTarget.style.boxShadow = '0 6px 20px rgba(255,255,255,0.2)';
               }}
               onMouseLeave={(e) => {
+                e.currentTarget.style.background = '#ffffff';
+                e.currentTarget.style.color = '#000000';
                 e.currentTarget.style.transform = 'none';
                 e.currentTarget.style.boxShadow = '0 4px 15px rgba(255,255,255,0.1)';
               }}
@@ -335,8 +377,8 @@ export default function AdminLogin() {
                   <span style={{
                     width: '16px',
                     height: '16px',
-                    border: '2px solid rgba(0,0,0,0.1)',
-                    borderTopColor: '#000000',
+                    border: '2px solid rgba(255,255,255,0.2)',
+                    borderTopColor: '#ffffff',
                     borderRadius: '50%',
                     display: 'inline-block',
                     animation: 'spin 0.8s linear infinite'
@@ -354,7 +396,7 @@ export default function AdminLogin() {
         </div>
       </div>
 
-      {/* RIGHT PANEL: Visual Section */}
+      {/* RIGHT PANEL: Visual Section matching the Hero Section exactly */}
       <div className="login-visual-panel" style={{
         flex: '1.2',
         position: 'relative',
@@ -362,71 +404,119 @@ export default function AdminLogin() {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'radial-gradient(circle at 50% 50%, #151518 0%, #09090b 100%)',
+        background: '#000000',
         borderLeft: '1px solid rgba(255, 255, 255, 0.05)',
         overflow: 'hidden',
         padding: '40px',
         zIndex: 2
       }}>
-        {/* Glow Effects */}
+        {/* Profile Card Wrapper */}
         <div style={{
-          position: 'absolute',
-          width: '500px',
-          height: '500px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(147, 51, 234, 0.06) 0%, rgba(0,0,0,0) 70%)',
-          top: '15%',
-          left: '20%',
-          pointerEvents: 'none',
-          animation: 'floatSlow 10s infinite ease-in-out'
-        }}></div>
-        <div style={{
-          position: 'absolute',
-          width: '450px',
-          height: '450px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.04) 0%, rgba(0,0,0,0) 70%)',
-          bottom: '15%',
-          right: '15%',
-          pointerEvents: 'none',
-          animation: 'floatSlow 14s infinite ease-in-out reverse'
-        }}></div>
-
-        {/* Profile Image container */}
-        <div style={{
-          position: 'relative',
-          width: '280px',
-          height: '280px',
-          borderRadius: '50%',
-          overflow: 'hidden',
-          border: '2px solid rgba(255, 255, 255, 0.08)',
-          background: 'rgba(255, 255, 255, 0.02)',
-          boxShadow: '0 20px 45px rgba(0, 0, 0, 0.6), 0 0 30px rgba(147, 51, 234, 0.1)',
+          width: '100%',
+          maxWidth: '420px',
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginBottom: '32px',
-          animation: 'profileFloat 5s infinite ease-in-out'
+          flexDirection: 'column',
+          alignItems: 'center'
         }}>
-          <img 
-            src="/assets/img/banner/profile.png" 
-            alt="Anuj Vishwakarma Profile" 
-            style={{
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
-          />
-        </div>
+          {/* Profile Image container with the morphing glows */}
+          <div className="hero-profile-image-wrap-login" style={{
+            width: '100%',
+            aspectRatio: '1',
+            borderRadius: '24px',
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+            {/* Morphing Backdrop Glows */}
+            <div className="morph-glow-gold" style={{
+              position: 'absolute',
+              top: '5%',
+              left: '5%',
+              right: '5%',
+              bottom: '5%',
+              zIndex: 1,
+              filter: 'blur(65px)',
+              opacity: 0.22,
+              pointerEvents: 'none',
+              background: 'radial-gradient(circle at 35% 35%, rgba(253, 249, 207, 0.3) 0%, rgba(0, 0, 0, 0) 70%)',
+              animation: 'morphBlob 20s infinite alternate ease-in-out'
+            }}></div>
+            <div className="morph-glow-white" style={{
+              position: 'absolute',
+              top: '5%',
+              left: '5%',
+              right: '5%',
+              bottom: '5%',
+              zIndex: 1,
+              filter: 'blur(65px)',
+              opacity: 0.18,
+              pointerEvents: 'none',
+              background: 'radial-gradient(circle at 65% 65%, rgba(255, 255, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%)',
+              animation: 'morphBlobSecondary 25s infinite alternate ease-in-out'
+            }}></div>
 
-        {/* Title */}
-        <div style={{ textAlign: 'center', zIndex: 1 }}>
-          <h2 style={{ fontSize: '26px', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.5px', marginBottom: '8px' }}>
-            Anuj Vishwakarma
-          </h2>
-          <p style={{ fontSize: '12px', color: '#a1a1aa', margin: 0, letterSpacing: '2px', textTransform: 'uppercase', fontWeight: 600 }}>
-            Portfolio Administration
-          </p>
+            {/* Profile Image */}
+            <img 
+              src="/assets/img/banner/profile.png" 
+              alt="Anuj Vishwakarma Profile" 
+              className="hero-profile-img-login"
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: '420px',
+                objectFit: 'contain',
+                borderRadius: '20px',
+                zIndex: 2,
+                boxShadow: '0 15px 35px rgba(0, 0, 0, 0.4)',
+                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%)',
+                maskImage: 'linear-gradient(to bottom, rgba(0, 0, 0, 1) 75%, rgba(0, 0, 0, 0) 100%)',
+                transition: 'all 0.3s ease'
+              }}
+            />
+          </div>
+
+          {/* Details below photo */}
+          <div className="profile-details-login" style={{
+            width: '100%',
+            position: 'relative',
+            paddingTop: '25px',
+            marginTop: '50px',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}>
+            {/* Divider line matching homepage */}
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '50%',
+              height: '1px',
+              backgroundColor: 'rgba(255, 255, 255, 0.1)'
+            }}></div>
+
+            <h2 style={{ 
+              fontSize: '24px', 
+              fontWeight: 500, 
+              color: '#ffffff', 
+              fontFamily: '"Unbounded", sans-serif',
+              margin: '0 0 6px 0'
+            }}>
+              Anuj Vishwakarma
+            </h2>
+            <p style={{ 
+              fontSize: '11px', 
+              color: 'var(--pra-clr, #a0a09a)', 
+              margin: 0, 
+              fontFamily: '"Unbounded", sans-serif',
+              letterSpacing: '1px', 
+              textTransform: 'uppercase' 
+            }}>
+              Portfolio Administration
+            </p>
+          </div>
         </div>
       </div>
 
@@ -434,14 +524,42 @@ export default function AdminLogin() {
         @keyframes spin {
           to { transform: rotate(360deg); }
         }
-        @keyframes profileFloat {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
+        @keyframes morphBlob {
+          0% {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            transform: rotate(0deg) scale(0.95);
+          }
+          50% {
+            border-radius: 70% 30% 52% 48% / 60% 40% 60% 40%;
+            transform: rotate(90deg) scale(1.05);
+          }
+          100% {
+            border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+            transform: rotate(180deg) scale(0.95);
+          }
         }
-        @keyframes floatSlow {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(15px, -15px) scale(1.03); }
+        @keyframes morphBlobSecondary {
+          0% {
+            border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+            transform: rotate(180deg) scale(1.05);
+          }
+          50% {
+            border-radius: 30% 70% 70% 30% / 50% 30% 70% 50%;
+            transform: rotate(90deg) scale(0.95);
+          }
+          100% {
+            border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%;
+            transform: rotate(0deg) scale(1.05);
+          }
         }
+        
+        .hero-profile-img-login {
+          filter: grayscale(100%) contrast(105%);
+        }
+        .hero-profile-img-login:hover {
+          filter: grayscale(0%) contrast(100%);
+        }
+
         @media (max-width: 991px) {
           .login-visual-panel {
             display: none !important;
