@@ -766,7 +766,7 @@ export default function FeedbackWidget() {
           border: 1px solid var(--cmborder) !important;
           box-shadow: inset 4px 4px 12px rgba(56, 53, 53, 0.27), inset -4px -4px 12px rgba(58, 56, 56, 0.32), 0 8px 24px rgba(0, 0, 0, 0.5) !important;
           cursor: pointer;
-          zIndex: 9999;
+          z-index: 9999;
           display: flex;
           align-items: center;
           justify-content: center;
