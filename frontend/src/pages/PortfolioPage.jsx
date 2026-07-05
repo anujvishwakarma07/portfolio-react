@@ -7,34 +7,50 @@ function PortfolioPage() {
   const [activeTab, setActiveTab] = useState('Show All')
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(true)
-
   const fallbackProjects = [
     {
-      _id: 'havynlife',
-      title: 'HAVYNLIFE',
-      subtitle: 'Airbnb-Inspired Platform',
-      category: 'Full Stack',
-      image: '/assets/img/blog/havynlife.png',
-      year: '@2025',
-      badge: 'Full Stack'
+      _id: 'vetocar',
+      title: 'VETOCAR',
+      subtitle: 'React.js · Node.js · Express.js · MongoDB · Gemini API · Razorpay',
+      category: 'AI / Fintech',
+      image: '/assets/img/project/VetoCar/vetocar_1.png',
+      year: '@2026',
+      badge: 'AI / Fintech',
+      githubUrl: 'https://github.com/anujvishwakarma07/VetoCar',
+      liveUrl: 'https://car-veto.vercel.app/'
     },
     {
       _id: 'tanviqgpt',
       title: 'TANVIQGPT',
-      subtitle: 'AI Chat Application',
+      subtitle: 'React.js · Node.js · Express.js · MongoDB Atlas · OpenRouter API',
       category: 'AI / LLM',
-      image: '/assets/img/blog/tanviqgpt.png',
+      image: '/assets/img/project/TanviqGpt/tanviqgpt_1.png',
       year: '@2025',
-      badge: 'AI / LLM'
+      badge: 'AI / LLM',
+      githubUrl: 'https://github.com/anujvishwakarma07/TanviqGpt',
+      liveUrl: 'https://tanviq-gpt.vercel.app/'
+    },
+    {
+      _id: 'havynlife',
+      title: 'HAVYNLIFE',
+      subtitle: 'Node.js · Express · MongoDB · EJS',
+      category: 'Full Stack',
+      image: '/assets/img/project/Havynlife/havynlife_1.png',
+      year: '@2025',
+      badge: 'Full Stack',
+      githubUrl: 'https://github.com/anujvishwakarma07/HavynLife',
+      liveUrl: 'https://havynlife.onrender.com/'
     },
     {
       _id: 'upnexa',
       title: 'UPNEXA',
-      subtitle: 'Startup Listing Platform',
+      subtitle: 'Next.js 15 · React 19 · Sanity CMS · Tailwind CSS',
       category: 'Next.js',
-      image: '/assets/img/blog/upnexa.png',
+      image: '/assets/img/project/UpNexa/upnexa_1.png',
       year: '@2025',
-      badge: 'Next.js'
+      badge: 'Next.js',
+      githubUrl: 'https://github.com/anujvishwakarma07/UpNexa',
+      liveUrl: 'https://upnexa.vercel.app/'
     }
   ]
 
@@ -79,11 +95,11 @@ function PortfolioPage() {
         <div className="container pt-100 pb-100">
           <div className="section-title text-center">
             <span className="section-sub" data-aos="fade-down" data-aos-duration="1000">
-              My Protfolio
+              My Portfolio
             </span>
             <h2 className="stitle fw-500 mt-3" data-aos="fade-down" data-aos-duration="1500">
-              Helping digital brands scale
-              <span className="text-storkes d-block">with design.</span>
+              Projects I've Built &
+              <span className="text-storkes d-block">Shipped Live.</span>
             </h2>
           </div>
         </div>
@@ -117,24 +133,37 @@ function PortfolioPage() {
                   {filteredProjects.map(project => (
                     <div 
                       key={project._id} 
-                      className="col-lg-4 col-md-6"
+                      className="col-lg-4 col-md-6 portfolio-project-grid-item"
                     >
-                      <div className="protfolio-porject-item d-center">
-                        <img src={project.image} alt={project.title} />
-                        <div className="project-cont-inner">
-                          <span className="title date-title text-end pt-3 pe-4 d-block">
-                            {project.year}
-                          </span>
-                          <div className="project-cont-box d-center w-100 h-100 position-relative">
-                            <div className="boxes text-center">
-                              <h4>
-                                <Link to={`/Portfolio/${project._id}`} className="title">
-                                  <span className="d-block">{project.title}</span>
-                                  {project.subtitle}
-                                </Link>
-                              </h4>
-                              {project.badge && <span className="ui-badge">{project.badge}</span>}
-                            </div>
+                      <div className="premium-project-card">
+                        <div className="project-img-container">
+                          <img 
+                            src={project.image || '/assets/img/project/Havynlife/havynlife_1.png'} 
+                            alt={project.title} 
+                            className="project-card-img" 
+                          />
+                          {project.badge && (
+                            <span className="project-glass-badge">
+                              {project.badge}
+                            </span>
+                          )}
+                        </div>
+                        <div className="project-card-content">
+                          <h4 className="project-card-title">
+                            <Link to={`/Portfolio/${project._id}`}>{project.title}</Link>
+                          </h4>
+                          <p className="project-card-tech">{project.subtitle || project.category}</p>
+                          <div className="project-card-actions">
+                            {project.githubUrl && (
+                              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="project-action-btn">
+                                <i className="bi bi-github"></i> GitHub
+                              </a>
+                            )}
+                            {project.liveUrl && (
+                              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="project-action-btn btn-live">
+                                <i className="bi bi-box-arrow-up-right"></i> Live
+                              </a>
+                            )}
                           </div>
                         </div>
                       </div>

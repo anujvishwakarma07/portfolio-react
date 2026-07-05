@@ -1,8 +1,29 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
 
 // Centralized project data details
 const projectsDetailList = [
+  {
+    id: 'vetocar',
+    title: 'VETOCAR',
+    subtitle: 'AI-powered auto contract auditor and negotiation assistant',
+    date: '2026',
+    client: 'Personal Project',
+    service: 'Full-Stack AI Application',
+    techStack: 'React.js · Node.js · Express.js · MongoDB · Gemini API · Razorpay',
+    description: 'Developed VetoCar, an AI-powered auto contract auditor and negotiation assistant designed to protect car buyers and lessees from predatory dealership markups and hidden fees. Integrated Gemini 2.5 Flash API to analyze lease/loan documents, decode vehicle parameters, identify dealer red flags, and compute Cost Delta Analytics with a deal fairness score. Built a secure token credit gateway system, VIN decoding via NHTSA API, Razorpay payment gateway integration, and real-time conversation AI coach.',
+    github: 'https://github.com/anujvishwakarma07/VetoCar',
+    live: 'https://car-veto.vercel.app/',
+    badge: 'AI / Fintech',
+    images: [
+      '/assets/img/project/VetoCar/vetocar_1.png',
+      '/assets/img/project/VetoCar/vetocar_2.png',
+      '/assets/img/project/VetoCar/vetocar_3.png',
+      '/assets/img/project/VetoCar/vetocar_4.png'
+    ]
+  },
   {
     id: 'havynlife',
     title: 'HAVYNLIFE',
@@ -15,7 +36,12 @@ const projectsDetailList = [
     github: 'https://github.com/anujvishwakarma07/HavynLife',
     live: 'https://havynlife.onrender.com/',
     badge: 'Full Stack',
-    images: ['/assets/img/blog/havynlife.png']
+    images: [
+      '/assets/img/project/Havynlife/havynlife_1.png',
+      '/assets/img/project/Havynlife/havynlife_2.png',
+      '/assets/img/project/Havynlife/havynlife_3.png',
+      '/assets/img/project/Havynlife/havynlife_4.png'
+    ]
   },
   {
     id: 'tanviqgpt',
@@ -29,7 +55,10 @@ const projectsDetailList = [
     github: 'https://github.com/anujvishwakarma07/TanviqGpt',
     live: 'https://tanviq-gpt.vercel.app/',
     badge: 'AI / LLM',
-    images: ['/assets/img/blog/tanviqgpt.png']
+    images: [
+      '/assets/img/project/TanviqGpt/tanviqgpt_1.png',
+      '/assets/img/project/TanviqGpt/tanviqgpt_2.png'
+    ]
   },
   {
     id: 'upnexa',
@@ -43,7 +72,13 @@ const projectsDetailList = [
     github: 'https://github.com/anujvishwakarma07/UpNexa',
     live: 'https://upnexa.vercel.app/',
     badge: 'Next.js',
-    images: ['/assets/img/blog/upnexa.png']
+    images: [
+      '/assets/img/project/UpNexa/upnexa_1.png',
+      '/assets/img/project/UpNexa/upnexa_2.png',
+      '/assets/img/project/UpNexa/upnexa_3.png',
+      '/assets/img/project/UpNexa/upnexa_4.png',
+      '/assets/img/project/UpNexa/upnexa_5.png'
+    ]
   }
 ]
 
@@ -52,6 +87,28 @@ function PortfolioDetailsPage() {
 
   // Find the active project details, or fall back to the first one if not found
   const activeProject = projectsDetailList.find(p => p.id === id) || projectsDetailList[0]
+
+  // Stateful gallery selection
+  const [selectedImage, setSelectedImage] = useState(activeProject.images[0])
+
+  // Reset selected image when project changes
+  useEffect(() => {
+    setSelectedImage(activeProject.images[0])
+  }, [activeProject])
+
+  const handlePrevImage = () => {
+    const currentIndex = activeProject.images.indexOf(selectedImage || activeProject.images[0]);
+    if (currentIndex === -1) return;
+    const prevIndex = (currentIndex - 1 + activeProject.images.length) % activeProject.images.length;
+    setSelectedImage(activeProject.images[prevIndex]);
+  };
+
+  const handleNextImage = () => {
+    const currentIndex = activeProject.images.indexOf(selectedImage || activeProject.images[0]);
+    if (currentIndex === -1) return;
+    const nextIndex = (currentIndex + 1) % activeProject.images.length;
+    setSelectedImage(activeProject.images[nextIndex]);
+  };
 
   useEffect(() => {
     document.title = `${activeProject.title} | Portfolio – Anuj Vishwakarma`
@@ -69,10 +126,15 @@ function PortfolioDetailsPage() {
             <a href="/portfolio" className="section-sub" data-aos="fade-down" data-aos-duration="1000">
               Back To Portfolio
             </a>
-            <h2 className="stitle fw-500 mt-3 mb-4" data-aos="fade-down" data-aos-duration="1500">
+            <h2 className="stitle fw-500 mt-3 mb-2" data-aos="fade-down" data-aos-duration="1500">
               {activeProject.title}
             </h2>
-            <p className="pra-clr max-458">
+            {activeProject.subtitle && (
+              <span className="d-block white fz-20 fw-400 mb-3" data-aos="fade-up" data-aos-duration="1200" style={{ color: '#e5c07b' }}>
+                {activeProject.subtitle}
+              </span>
+            )}
+            <p className="pra-clr max-458 mx-auto">
               {activeProject.service}
             </p>
           </div>
@@ -85,7 +147,7 @@ function PortfolioDetailsPage() {
           <div className="row g-4">
             {/* Left Column: Specs */}
             <div className="col-lg-4">
-              <div className="protfolio-details-wrap pe-xxl-4">
+              <div className="protfolio-details-wrap pe-xxl-4 sticky-details-wrap">
                 <h4 className="white mb-30">Project Details</h4>
                 <div className="des-dated-area">
                   <div className="date-border"></div>
@@ -138,12 +200,45 @@ function PortfolioDetailsPage() {
 
             {/* Right Column: Project Showcase Images */}
             <div className="col-lg-8">
-              <div className="project-detial-right mt-lg-0 mt-4">
-                {activeProject.images.map((imgUrl, idx) => (
-                  <div key={idx} className="thumbs w-100">
-                    <img src={imgUrl} alt={`showcase-${idx}`} className="w-100" />
+              <div className="project-gallery-container mt-lg-0 mt-4">
+                <div className="project-featured-image-wrapper">
+                  {activeProject.images && activeProject.images.length > 1 && (
+                    <>
+                      <button 
+                        className="gallery-nav-btn prev-btn" 
+                        onClick={handlePrevImage} 
+                        aria-label="Previous image"
+                      >
+                        <i className="bi bi-chevron-left"></i>
+                      </button>
+                      <button 
+                        className="gallery-nav-btn next-btn" 
+                        onClick={handleNextImage} 
+                        aria-label="Next image"
+                      >
+                        <i className="bi bi-chevron-right"></i>
+                      </button>
+                    </>
+                  )}
+                  <img 
+                    src={selectedImage || activeProject.images[0]} 
+                    alt={`${activeProject.title} featured`} 
+                    className="project-featured-image" 
+                  />
+                </div>
+                {activeProject.images && activeProject.images.length > 1 && (
+                  <div className="project-thumbnails-grid">
+                    {activeProject.images.map((imgUrl, idx) => (
+                      <div 
+                        key={idx} 
+                        className={`project-thumbnail-item ${selectedImage === imgUrl ? 'active' : ''}`}
+                        onClick={() => setSelectedImage(imgUrl)}
+                      >
+                        <img src={imgUrl} alt={`thumbnail-${idx}`} className="project-thumbnail-img" />
+                      </div>
+                    ))}
                   </div>
-                ))}
+                )}
               </div>
             </div>
           </div>
@@ -155,31 +250,59 @@ function PortfolioDetailsPage() {
         <div className="container">
           <h3 className="single-head white mb-4">Related Projects</h3>
           <div className="single-project-wrap">
-            <div className="row g-4">
+            <Swiper
+              modules={[Autoplay]}
+              spaceBetween={24}
+              loop={relatedProjects.length > 1}
+              autoplay={{
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              breakpoints={{
+                320: { slidesPerView: 1, spaceBetween: 16 },
+                768: { slidesPerView: Math.min(relatedProjects.length, 2), spaceBetween: 20 },
+                1024: { slidesPerView: Math.min(relatedProjects.length, 3), spaceBetween: 24 }
+              }}
+              className="related-projects-swiper"
+            >
               {relatedProjects.map(project => (
-                <div key={project.id} className="col-lg-4 col-md-6">
-                  <div className="protfolio-porject-item d-center">
-                    <img src={project.images[0]} alt={project.title} />
-                    <div className="project-cont-inner">
-                      <span className="title date-title text-end pt-3 pe-4 d-block">
-                        {project.date.split(' ').pop()}
-                      </span>
-                      <div className="project-cont-box d-center w-100 h-100 position-relative">
-                        <div className="boxes text-center">
-                          <h4>
-                            <a href={`/portfolio/${project.id}`} className="title">
-                              <span className="d-block">{project.title}</span>
-                              {project.subtitle}
-                            </a>
-                          </h4>
-                          <span className="ui-badge">{project.badge}</span>
-                        </div>
+                <SwiperSlide key={project.id}>
+                  <div className="premium-project-card">
+                    <div className="project-img-container">
+                      <img 
+                        src={project.images[0] || '/assets/img/project/Havynlife/havynlife_1.png'} 
+                        alt={project.title} 
+                        className="project-card-img" 
+                      />
+                      {project.badge && (
+                        <span className="project-glass-badge">
+                          {project.badge}
+                        </span>
+                      )}
+                    </div>
+                    <div className="project-card-content">
+                      <h4 className="project-card-title">
+                        <a href={`/Portfolio/${project.id}`}>{project.title}</a>
+                      </h4>
+                      <p className="project-card-tech">{project.techStack || project.subtitle}</p>
+                      <div className="project-card-actions">
+                        {project.github && (
+                          <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-action-btn">
+                            <i className="bi bi-github"></i> GitHub
+                          </a>
+                        )}
+                        {project.live && (
+                          <a href={project.live} target="_blank" rel="noopener noreferrer" className="project-action-btn btn-live">
+                            <i className="bi bi-box-arrow-up-right"></i> Live
+                          </a>
+                        )}
                       </div>
                     </div>
                   </div>
-                </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </div>
       </section>
