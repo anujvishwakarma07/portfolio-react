@@ -27,10 +27,17 @@ const allowedOrigins = [
     'https://anujvishwakarma.me'
 ];
 
+const isLocalOrigin = (origin) => {
+    if (!origin) return true;
+    // Match localhost, 127.0.0.1, and private IP ranges (192.168.x.x, 10.x.x.x, 172.16.x.x to 172.31.x.x)
+    const localIpRegex = /^(https?:\/\/)?(localhost|127\.0\.0\.1|192\.168\.\d{1,3}\.\d{1,3}|10\.\d{1,3}\.\d{1,3}\.\d{1,3}|172\.(1[6-9]|2\d|3[0-1])\.\d{1,3}\.\d{1,3})(:\d+)?$/;
+    return localIpRegex.test(origin);
+};
+
 app.use(cors({
     origin: (origin, callback) => {
         // Allow requests with no origin (like mobile apps or curl/Postman during development)
-        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        if (!origin || allowedOrigins.indexOf(origin) !== -1 || isLocalOrigin(origin)) {
             callback(null, true);
         } else {
             callback(new Error("Blocked by cors policy"));
@@ -79,7 +86,13 @@ app.use((err, req, res, next) => {
 // WebSocket Live Analytics Setup
 const io = new Server(server, {
     cors: {
-        origin: allowedOrigins,
+        origin: (origin, callback) => {
+            if (!origin || allowedOrigins.indexOf(origin) !== -1 || isLocalOrigin(origin)) {
+                callback(null, true);
+            } else {
+                callback(new Error("Blocked by Socket CORS"));
+            }
+        },
         credentials: true
     }
 });

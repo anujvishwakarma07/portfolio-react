@@ -9,12 +9,12 @@ function Services() {
         <div className="cus__mb60 d-md-flex d-grid align-items-end justify-content-between gap-3">
           <div className="section-title">
             <span className="section-sub" data-aos="fade-down" data-aos-duration="1000">
-              Quality Services
+              Technical Expertise
             </span>
             <h2 className="stitle fw-500 mt-3" data-aos="fade-down" data-aos-duration="1500">
-              My Strength Lies
+              My,
               <span className="text-storkes d-block">
-                in Quality Work
+                Core Expertise
               </span>
             </h2>
           </div>
@@ -48,28 +48,44 @@ function Services() {
             1200: { slidesPerView: 3, spaceBetween: 24 },
           }}
         >
+          {/* Card 1 */}
           <SwiperSlide>
             <div className="quality-work-items cmn-shadow round8">
               <h3 className="white">
-                <a href="service.html" className="white">
-                  <span className="d-block white">Web</span>
-                  Development
+                <a href="#conts" className="white">
+                  MERN Stack
+                  <span className="d-block white">Development</span>
                 </a>
               </h3>
-              <ul className="label-exlist justify-content-center d-grid gap-xxl-3 gap-2">
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ React & Next.js</a>
+              <ul className="label-exlist d-flex flex-column gap-3 text-start align-items-start">
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>React.js & Next.js for modern interfaces</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Node.js & Express.js</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Node.js, Express.js & REST APIs</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ MongoDB & Database design</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>MongoDB & Mongoose for database management</span>
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>End-to-end full-stack application development</span>
+                  </a>
                 </li>
               </ul>
               <div className="pri-btn">
-                <a href="service.html" className="d-flex align-items-center gap-2 pra-clr fw-500">
-                  See Pricing
+                <a href="#conts" className="d-flex align-items-center gap-2 pra-clr fw-500">
+                  Get In Touch
                   <span className="arrows">
                     <img src="/assets/img/blog/right-arrow.png" alt="img" />
                   </span>
@@ -78,28 +94,44 @@ function Services() {
             </div>
           </SwiperSlide>
 
+          {/* Card 2 */}
           <SwiperSlide>
             <div className="quality-work-items cmn-shadow round8">
               <h3 className="white">
-                <a href="service.html" className="white">
-                  Full-Stack
-                  <span className="d-block white">Applications</span>
+                <a href="#conts" className="white">
+                  LLM & AI
+                  <span className="d-block white">Integration</span>
                 </a>
               </h3>
-              <ul className="label-exlist justify-content-center d-grid gap-xxl-3 gap-2">
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ MERN Stack Development</a>
+              <ul className="label-exlist d-flex flex-column gap-3 text-start align-items-start">
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Google Gemini (LLM) integration for intelligent features</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Authentication & APIs</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>PDF parsing and structured data extraction</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Scalable App Architecture</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>AI-powered automation and insights</span>
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Smart feature implementation with fallback systems</span>
+                  </a>
                 </li>
               </ul>
               <div className="pri-btn">
-                <a href="service.html" className="d-flex align-items-center gap-2 pra-clr fw-500">
-                  See Pricing
+                <a href="#conts" className="d-flex align-items-center gap-2 pra-clr fw-500">
+                  Get In Touch
                   <span className="arrows">
                     <img src="/assets/img/blog/right-arrow.png" alt="img" />
                   </span>
@@ -108,58 +140,44 @@ function Services() {
             </div>
           </SwiperSlide>
 
+          {/* Card 3 */}
           <SwiperSlide>
             <div className="quality-work-items cmn-shadow round8">
               <h3 className="white">
-                <a href="service.html" className="white">
-                  Performance &
-                  <span className="d-block white">Optimization</span>
+                <a href="#conts" className="white">
+                  Production-Grade
+                  <span className="d-block white">Development</span>
                 </a>
               </h3>
-              <ul className="label-exlist justify-content-center d-grid gap-xxl-3 gap-2">
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Next.js Optimization</a>
+              <ul className="label-exlist d-flex flex-column gap-3 text-start align-items-start">
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Secure authentication using JWT & OAuth</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ API Performance Tuning</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Payment integration (Razorpay)</span>
+                  </a>
                 </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Clean & Maintainable Code</a>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Scalable architecture & performance optimization</span>
+                  </a>
+                </li>
+                <li className="w-100">
+                  <a href="#conts" className="d-flex align-items-start gap-2 pra-clr">
+                    <span className="card-bullet-dot">•</span>
+                    <span>Deployment and maintenance of live applications</span>
+                  </a>
                 </li>
               </ul>
               <div className="pri-btn">
-                <a href="service.html" className="d-flex align-items-center gap-2 pra-clr fw-500">
-                  See Pricing
-                  <span className="arrows">
-                    <img src="/assets/img/blog/right-arrow.png" alt="img" />
-                  </span>
-                </a>
-              </div>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="quality-work-items cmn-shadow round8">
-              <h3 className="white">
-                <a href="service.html" className="white">
-                  <span className="d-block white">Web</span>
-                  Development
-                </a>
-              </h3>
-              <ul className="label-exlist justify-content-center d-grid gap-xxl-3 gap-2">
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Wordpress</a>
-                </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Brand</a>
-                </li>
-                <li>
-                  <a href="service.html" className="d-flex align-items-center pra-clr">+ Laravel</a>
-                </li>
-              </ul>
-              <div className="pri-btn">
-                <a href="service.html" className="d-flex align-items-center gap-2 pra-clr fw-500">
-                  See Pricing
+                <a href="#conts" className="d-flex align-items-center gap-2 pra-clr fw-500">
+                  Get In Touch
                   <span className="arrows">
                     <img src="/assets/img/blog/right-arrow.png" alt="img" />
                   </span>
@@ -170,10 +188,10 @@ function Services() {
         </Swiper>
 
         <div className="service-hoverbox d-flex justify-content-center">
-          <a href="service.html" className="hover-circle cmborder wow fadeInUp" data-wow-duration="1.6s">
+          <a href="#ports" className="hover-circle cmborder wow fadeInUp" data-wow-duration="1.6s">
             <span className="box">
               <i className="bi bi-arrow-up-right"></i>
-              <span className="textmore">Services All</span>
+              <span className="textmore">My Works</span>
             </span>
           </a>
         </div>

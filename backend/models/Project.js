@@ -17,7 +17,7 @@ const projectSchema = new mongoose.Schema({
     image: {
         type: String,
         required: true,
-        default: '/assets/img/blog/havynlife.png'
+        default: '/assets/img/project/Havynlife/havynlife_1.png'
     },
     year: {
         type: String,
