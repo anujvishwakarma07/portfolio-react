@@ -8,9 +8,6 @@ import Services from '../components/Services'
 import Sponsors from '../components/Sponsors'
 import Works from '../components/Works'
 import Testimonials from '../components/Testimonials'
-import Blogs from '../components/Blogs'
-import Footer from '../components/Footer'
-import Header from '../components/Header'
 
 function Home() {
     useEffect(() => {
@@ -19,7 +16,6 @@ function Home() {
 
     return (
         <>
-            <Header />
             {/* Hero banner section wrapper */}
             <section className="banner-section mb-common" id="bn">
                 <Hero />
@@ -33,7 +29,6 @@ function Home() {
             <Sponsors />
             <Works />
             <Testimonials />
-            {/* <Blogs /> */}
         </>
     )
 }
