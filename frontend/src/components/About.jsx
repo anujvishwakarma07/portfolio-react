@@ -61,9 +61,9 @@ function About() {
               </div>
               <div className="about-content-inner d-flex justify-content-end">
                 <div className="boxes">
-                  <a href="#" className="arrow">
+                  <span className="arrow">
                     <img src="/assets/img/blog/arrow-down.png" alt="img" />
-                  </a>
+                  </span>
                   <div className="right-comp">
                     <p className="pra-clr mb-3" dangerouslySetInnerHTML={{ __html: content.para1 }}></p>
                     <p className="pra-clr mb-4" dangerouslySetInnerHTML={{ __html: content.para2 }}></p>
@@ -91,12 +91,7 @@ function About() {
                         </a>
                       </li>
                     </ul>
-                    <a href="#" className="hover-circle cmborder wow fadeInUp" data-wow-duration="1.6s">
-                      <span className="box">
-                        <i className="bi bi-arrow-up-right"></i>
-                        <span className="textmore">About Me</span>
-                      </span>
-                    </a>
+
                   </div>
                 </div>
               </div>

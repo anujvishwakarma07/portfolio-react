@@ -71,7 +71,7 @@ function Footer() {
                   Let’s connect and build something impactful.
                 </p>
                 <div className="contact-infos">
-                  <a href="#0">Kanpur (Uttar Pradesh), India, 208008</a>
+                  <a href="https://maps.google.com/?q=Kanpur,Uttar+Pradesh,India" target="_blank" rel="noopener noreferrer">Kanpur (Uttar Pradesh), India, 208008</a>
                   <a href="tel:+916386109984">+91 6386109984</a>
                   <a href="mailto:anujvishwakarma7077@gmail.com">anujvishwakarma7077@gmail.com</a>
                 </div>
@@ -174,13 +174,9 @@ function Footer() {
         <div className="footer-bottom">
           <div className="copyright">
             <p className="pra-clr">
-              &copy; 2025. All rights reserved <a href="/" className="pwhite">Anuj Vishwakarma.</a>
+              &copy; 2026. All rights reserved <a href="/" className="pwhite">Anuj Vishwakarma.</a>
             </p>
-            <a href="#bn" className="scroll-toptext">Back To Home</a>
-            <ul className="terms">
-              <li><a href="#0">Terms & Condition</a></li>
-              <li><a href="#0">Privacy Policy</a></li>
-            </ul>
+            <a href="#bn" className="scroll-toptext">Back To Top</a>
           </div>
         </div>
       </div>

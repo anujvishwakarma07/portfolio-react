@@ -7,35 +7,8 @@ function Testimonials() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fallbackReviews = [
-    {
-      _id: 'fallback_1',
-      name: 'Thomas Leio',
-      role: 'UI/UX Designer',
-      message: 'Nam libero cumque nihil impedit quo minus id quod maxime facere omnis voluptas assumenda an repellendus temporibus autem',
-      rating: 5,
-      tag: 'Design Quality',
-      image: '/assets/img/testimonial/client1.png'
-    },
-    {
-      _id: 'fallback_2',
-      name: 'Nicolas Jon',
-      role: 'Web Designer',
-      message: 'Nam libero cumque nihil impedit quo minus id quod maxime facere omnis voluptas assumenda an repellendus temporibus autem',
-      rating: 5,
-      tag: 'Clean Code',
-      image: '/assets/img/testimonial/client2.png'
-    },
-    {
-      _id: 'fallback_3',
-      name: 'Alica Walker',
-      role: '3D Artist',
-      message: 'Nam libero cumque nihil impedit quo minus id quod maxime facere omnis voluptas assumenda an repellendus temporibus autem',
-      rating: 5,
-      tag: 'Instant Support',
-      image: '/assets/img/testimonial/client3.png'
-    }
-  ];
+  // No fake fallback — only show real approved reviews from the database
+  const fallbackReviews = [];
 
   useEffect(() => {
     const fetchApprovedReviews = async () => {
@@ -55,6 +28,10 @@ function Testimonials() {
   }, []);
 
   const reviewList = reviews.length > 0 ? reviews : fallbackReviews;
+
+  // Don't render the section at all if there are no real reviews
+  if (!loading && reviewList.length === 0) return null;
+
   const isSingle = reviewList.length === 1;
 
   // For multi-slide: show 2 on large screens so each card is wider
@@ -79,12 +56,10 @@ function Testimonials() {
           </h2>
         </div>
 
-        {/* Single review: centered, max-width card */}
+        {/* Single review: full width */}
         {isSingle ? (
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ width: '100%', maxWidth: '620px' }}>
-              <ReviewCard item={reviewList[0]} />
-            </div>
+          <div style={{ width: '100%' }}>
+            <ReviewCard item={reviewList[0]} />
           </div>
         ) : (
           <Swiper
@@ -111,8 +86,8 @@ function Testimonials() {
               320:  { slidesPerView: 1, spaceBetween: 12 },
               575:  { slidesPerView: 1, spaceBetween: 12 },
               768:  { slidesPerView: 1, spaceBetween: 16 },
-              1024: { slidesPerView: getSlidesPerView(reviewList.length), spaceBetween: 24 },
-              1200: { slidesPerView: getSlidesPerView(reviewList.length), spaceBetween: 28 },
+              1024: { slidesPerView: 1, spaceBetween: 24 },
+              1200: { slidesPerView: 1, spaceBetween: 28 },
             }}
           >
             {reviewList.map((item) => (
@@ -150,12 +125,12 @@ function ReviewCard({ item }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        padding: '22px 26px',
+        padding: '32px 36px',
       }}
     >
       <div>
-        <div className="testi-thumb d-flex align-items-center justify-content-between mb-2">
-          <div className="thumb" style={{ width: '48px', height: '48px', borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="testi-thumb d-flex align-items-center justify-content-between mb-3">
+          <div className="thumb" style={{ width: '56px', height: '56px', borderRadius: '50%', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
             <img
               src={item.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=27272a&color=fff&bold=true`}
               alt={item.name}
@@ -169,30 +144,26 @@ function ReviewCard({ item }) {
         <span className="testi-title" style={{ fontSize: '13px' }}>{item.tag || 'Portfolio Review'}</span>
         <p className="pra-clr" style={{
           fontStyle: 'italic',
-          marginTop: '8px',
+          marginTop: '12px',
           marginBottom: 0,
-          fontSize: '14px',
-          lineHeight: '1.65',
-          display: '-webkit-box',
-          WebkitLineClamp: '3',
-          WebkitBoxOrient: 'vertical',
-          overflow: 'hidden',
+          fontSize: '15.5px',
+          lineHeight: '1.75',
         }}>
-          "{item.message}"
+          &ldquo;{item.message}&rdquo;
         </p>
       </div>
 
       <div
-        className="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-3"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '12px' }}
+        className="d-flex flex-wrap align-items-center justify-content-between gap-2 mt-4"
+        style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '16px' }}
       >
         <div className="cont">
-          <span className="fw-500 white d-block mb-1" style={{ fontSize: '15px' }}>{item.name}</span>
-          <span className="pra-clr" style={{ fontSize: '12px' }}>{item.role}</span>
+          <span className="fw-500 white d-block mb-1" style={{ fontSize: '16px' }}>{item.name}</span>
+          <span className="pra-clr" style={{ fontSize: '13px' }}>{item.role}</span>
         </div>
-        <div className="d-flex cmborder ratting-inner round100 align-items-center gap-1" style={{ padding: '4px 10px' }}>
+        <div className="d-flex cmborder ratting-inner round100 align-items-center gap-1" style={{ padding: '5px 12px' }}>
           {Array.from({ length: 5 }).map((_, i) => (
-            <i key={i} className={`bi ${i < item.rating ? 'bi-star-fill' : 'bi-star'}`} style={{ color: i < item.rating ? '#f59e0b' : '#3f3f46', fontSize: '11px' }}></i>
+            <i key={i} className={`bi ${i < item.rating ? 'bi-star-fill' : 'bi-star'}`} style={{ color: i < item.rating ? '#f59e0b' : '#3f3f46', fontSize: '12px' }}></i>
           ))}
         </div>
       </div>
