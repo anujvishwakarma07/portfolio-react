@@ -78,6 +78,11 @@ function Sponsors() {
                   <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" />
                   <span>Postman</span>
                 </div>
+                {/* 14. AWS */}
+                <div className="tech-card aws">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" />
+                  <span>AWS</span>
+                </div>
 
                 {/* Duplicate Cards for Smooth Infinite Loop */}
                 <div className="tech-card react">
@@ -131,6 +136,10 @@ function Sponsors() {
                 <div className="tech-card postman">
                   <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" />
                   <span>Postman</span>
+                </div>
+                <div className="tech-card aws">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" />
+                  <span>AWS</span>
                 </div>
               </div>
             </div>

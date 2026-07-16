@@ -5056,7 +5056,7 @@ p {
   }
 
   100% {
-    transform: translateX(calc(-1 * (250px + 40px) * 13));
+    transform: translateX(calc(-1 * (250px + 40px) * 14));
   }
 }
 
@@ -5172,6 +5172,10 @@ p {
   box-shadow: 0 15px 30px rgba(231, 44, 24, 0.25);
 }
 
+.tech-card.aws:hover {
+  box-shadow: 0 15px 30px rgba(255, 153, 0, 0.25);
+}
+
 @media (max-width: 991px) {
   .tech-card {
     width: 200px;
@@ -5184,7 +5188,7 @@ p {
     }
 
     100% {
-      transform: translateX(calc(-1 * (200px + 40px) * 13));
+      transform: translateX(calc(-1 * (200px + 40px) * 14));
     }
   }
 }
@@ -5215,7 +5219,7 @@ p {
     }
 
     100% {
-      transform: translateX(calc(-1 * (160px + 20px) * 13));
+      transform: translateX(calc(-1 * (160px + 20px) * 14));
     }
   }
 }
