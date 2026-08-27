@@ -5144,6 +5144,10 @@ p {
   box-shadow: 0 15px 30px rgba(97, 218, 251, 0.25);
 }
 
+.tech-card.typescript:hover {
+  box-shadow: 0 15px 30px rgba(49, 120, 198, 0.25);
+}
+
 .tech-card.nodejs:hover {
   box-shadow: 0 15px 30px rgba(51, 153, 51, 0.25);
 }

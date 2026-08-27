@@ -23,62 +23,67 @@ function Sponsors() {
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="light-filter" alt="Next.js" />
                   <span>Next.js</span>
                 </div>
-                {/* 3. Node.js */}
+                {/* 3. TypeScript */}
+                <div className="tech-card typescript">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+                  <span>TypeScript</span>
+                </div>
+                {/* 4. Node.js */}
                 <div className="tech-card nodejs">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
                   <span>Node.js</span>
                 </div>
-                {/* 4. MongoDB */}
+                {/* 5. MongoDB */}
                 <div className="tech-card mongodb">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
                   <span>MongoDB</span>
                 </div>
-                {/* 5. Express.js */}
+                {/* 6. Express.js */}
                 <div className="tech-card express">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" className="light-filter" alt="Express.js" />
                   <span>Express.js</span>
                 </div>
-                {/* 6. GitHub */}
+                {/* 7. GitHub */}
                 <div className="tech-card github">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" className="light-filter" alt="GitHub" />
                   <span>GitHub</span>
                 </div>
-                {/* 7. Java */}
+                {/* 8. Java */}
                 <div className="tech-card java">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" />
                   <span>Java</span>
                 </div>
-                {/* 8. Tailwind CSS */}
+                {/* 9. Tailwind CSS */}
                 <div className="tech-card tailwind">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" alt="Tailwind" />
                   <span>Tailwind</span>
                 </div>
-                {/* 9. Docker */}
+                {/* 10. Docker */}
                 <div className="tech-card docker">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" />
                   <span>Docker</span>
                 </div>
-                {/* 10. Kubernetes */}
+                {/* 11. Kubernetes */}
                 <div className="tech-card kubernetes">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg" alt="Kubernetes" />
                   <span>Kubernetes</span>
                 </div>
-                {/* 11. MySQL */}
+                {/* 12. MySQL */}
                 <div className="tech-card mysql">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
                   <span>MySQL</span>
                 </div>
-                {/* 12. Vercel */}
+                {/* 13. Vercel */}
                 <div className="tech-card vercel">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" className="light-filter" alt="Vercel" />
                   <span>Vercel</span>
                 </div>
-                {/* 13. Postman */}
+                {/* 14. Postman */}
                 <div className="tech-card postman">
                   <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman" />
                   <span>Postman</span>
                 </div>
-                {/* 14. AWS */}
+                {/* 15. AWS */}
                 <div className="tech-card aws">
                   <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" />
                   <span>AWS</span>
@@ -92,6 +97,10 @@ function Sponsors() {
                 <div className="tech-card nextjs">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" className="light-filter" alt="Next.js" />
                   <span>Next.js</span>
+                </div>
+                <div className="tech-card typescript">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" />
+                  <span>TypeScript</span>
                 </div>
                 <div className="tech-card nodejs">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" />
