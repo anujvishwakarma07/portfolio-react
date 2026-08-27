@@ -5131,6 +5131,7 @@ p {
 .tech-card.nextjs:hover img,
 .tech-card.github:hover img,
 .tech-card.vercel:hover img,
+.tech-card.prisma:hover img,
 .tech-card.express:hover img {
   filter: grayscale(0) opacity(1) invert(1);
 }
@@ -5154,6 +5155,14 @@ p {
 
 .tech-card.mongodb:hover {
   box-shadow: 0 15px 30px rgba(71, 162, 72, 0.25);
+}
+
+.tech-card.postgresql:hover {
+  box-shadow: 0 15px 30px rgba(51, 103, 145, 0.35);
+}
+
+.tech-card.prisma:hover {
+  box-shadow: 0 15px 30px rgba(90, 103, 216, 0.3);
 }
 
 .tech-card.tailwind:hover {
